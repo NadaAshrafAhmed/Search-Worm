@@ -6,6 +6,9 @@ import html2text
 
 from urllib.request import Request, urlopen
 
+import re
+from bs4 import BeautifulSoup
+
 import pandas as pd
 import numpy as np
 
@@ -50,6 +53,7 @@ urls2 = []
 urls3 = []
 urls4 = []
 
+all_urls = []
 
 def k_means():
 
@@ -114,10 +118,10 @@ def LDA( doc_complete , n ):
     # Running and Trainign LDA model on the document term matrix.
     ldamodel = Lda(doc_term_matrix, num_topics=3, id2word=dictionary, passes=50)
 
-    arr = ldamodel.print_topics(num_topics=3, num_words=5)
+    arr = ldamodel.print_topics(num_topics=3, num_words=3)
 
     for i in range(0,3):
-        topn_words = [word for word, prob in ldamodel.show_topic(i, topn=5)]
+        topn_words = [word for word, prob in ldamodel.show_topic(i, topn=3)]
 
         if n==1 :
             topic_words1.append(topn_words)
@@ -135,7 +139,12 @@ def LDA( doc_complete , n ):
 
 
 
-
+def visible(element):
+    if element.parent.name in ['style', 'script', '[document]', 'head', 'title']:
+        return False
+    elif re.match('<!--.*-->', str(element.encode('utf-8'))):
+        return False
+    return True
 
 
 
@@ -143,16 +152,32 @@ def LDA( doc_complete , n ):
 def history():
     # list of user history
     urls=request.get_json()['urls']
-    # print(urls)
+
     for url in urls:
-        # print( url )
-        req = Request(url, headers={'User-Agent': 'Mozilla/5.0'} )
-        mybytes = urlopen( req ).read()
-        mystr = mybytes.decode( "utf8" )
-        # print (mystr)
-        doc =  html2text.html2text( str( mystr ) )
+        print( url )
+        # req = Request(url, headers={'User-Agent': 'Mozilla/5.0'} )
+        # mybytes = urlopen( req ).read()
+        # mystr = mybytes.decode( "utf8" )
+        # # print (mystr)
+        # doc =  html2text.html2text( str( mystr ) )
+
+        req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        html = urlopen(req)
+        soup = BeautifulSoup(html)
+        data = soup.findAll(text=True)
+
+        result = filter(visible, data)
+
+        arr = list(result)
+
+        doc = ""
+
+        for i in arr:
+            doc += i
+            doc += "\n"
+
         documents.append(doc)
-        # print( doc )
+        print( doc )
 
     k_means()
 
@@ -170,85 +195,107 @@ def history():
         elif clusters[i]==3:
             topic4.append(documents[i])
 
-    LDA(topic1,1)
+    if len(topic1)>0:
 
-    # c=0
-    #
-    # print(topic_words1[0][0])
-    #
-    # res = search("python",stop= 3)
-    # print("af res")
-    # for i in res:
-    #     print(i)
-    #     c += 1
-    #
-    # print("c:   " + str(c))
+        LDA(topic1,1)
 
-    for i in topic_words1:
-        for j in i :
-            print(j)
-            k = 0
-            res = search(j,stop= 3)
-            for r in res:
-                if k<3:
-                    urls1.append(r)
-                    k += 1
+        # c=0
+        #
+        # print(topic_words1[0][0])
+        #
+        # res = search("python",stop= 3)
+        # print("af res")
+        # for i in res:
+        #     print(i)
+        #     c += 1
+        #
+        # print("c:   " + str(c))
 
+        for i in topic_words1:
+            for j in i :
+                print(j)
+                k = 0
+                res = search(j,stop= 3)
+                for r in res:
+                    if k<3:
+                        urls1.append(r)
+                        k += 1
 
+    if len(topic2) > 0:
 
+        LDA(topic2,2)
 
-    LDA(topic2,2)
+        for i in topic_words2:
+            for j in i :
+                k = 0
+                res = search(j,stop= 3)
+                for r in res:
+                    if k<3:
+                        urls2.append(r)
+                        k += 1
 
-    for i in topic_words2:
-        for j in i :
-            k = 0
-            res = search(j,stop= 3)
-            for r in res:
-                if k<3:
-                    urls2.append(r)
-                    k += 1
+    if len(topic3) > 0:
 
-    LDA(topic3,3)
+        LDA(topic3,3)
 
-    for i in topic_words3:
-        for j in i :
-            k = 0
-            res = search(j,stop= 3)
-            for r in res:
-                if k<3:
-                    urls3.append(r)
-                    k += 1
+        for i in topic_words3:
+            for j in i :
+                k = 0
+                res = search(j,stop= 3)
+                for r in res:
+                    if k<3:
+                        urls3.append(r)
+                        k += 1
 
-    LDA(topic4,4)
+    if len(topic4) > 0:
 
-    for i in topic_words4:
-        for j in i :
-            k=0
-            res = search(j,stop= 3)
-            for r in res:
-                if k<3:
-                    urls4.append(r)
-                    k += 1
+        LDA(topic4,4)
+
+        for i in topic_words4:
+            for j in i :
+                k=0
+                res = search(j,stop= 3)
+                for r in res:
+                    if k<3:
+                        urls4.append(r)
+                        k += 1
 
     print("topic1")
+    print(str(len(topic_words1)))
+    print(topic_words1)
     for i in urls1:
        print(i)
 
 
 
     print("topic2")
+    print(str(len(topic_words2)))
+    print(topic_words2)
     for i in urls2:
         print(i)
 
     print("topic3")
+    print(str(len(topic_words3)))
+    print(topic_words3)
     for i in urls3:
         print(i)
 
     print("topic4")
+    print(str(len(topic_words4)))
+    print(topic_words4)
     for i in urls4:
         print(i)
 
-    return ("Nada")
+    all_urls.append(urls1)
+    all_urls.append(urls2)
+    all_urls.append(urls3)
+    all_urls.append(urls4)
+
+    all_urls_str = str(all_urls)
+
+    all_urls_str = all_urls_str.replace("'", '"')
+
+    return (all_urls_str)
 
 
 if __name__ == '__main__':

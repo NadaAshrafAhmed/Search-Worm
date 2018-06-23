@@ -21,7 +21,9 @@ chrome.history.search({text: '', maxResults: 10}, function(data) {
                 {
                     if (xmlhttp.readyState==4 && xmlhttp.status==200)
                     {
-                       console.log(xmlhttp.responseText);
+//                       console.log(xmlhttp.responseText);
+                       var res = JSON.parse(xmlhttp.responseText);
+                       console.log(res)
                     }
                 }
 
