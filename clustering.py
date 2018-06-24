@@ -152,6 +152,8 @@ def visible(element):
 def history():
     # list of user history
     urls=request.get_json()['urls']
+    id = request.get_json()['ID']
+    print(id)
 
     for url in urls:
         print( url )
@@ -297,6 +299,24 @@ def history():
 
     return (all_urls_str)
 
+
+@app.route('/save_data',methods=["POST"])
+def save_data():
+    id = request.form.get('id')
+    print(id)
+
+    return "Thank you !"
+
+
+@app.route('/id_exist',methods=["POST"])
+def id_exist():
+
+    id = request.get_json()['ID']
+    print(id)
+
+    #check database ..
+
+    return ("true")
 
 if __name__ == '__main__':
     app.run(debug=True)
