@@ -147,8 +147,11 @@ def visible(element):
     return True
 
 
-
 @app.route('/history',methods=["POST"])
+def history1():
+    # return str({str(["a","b","c","d"]),str(["e","f","g","h"]),str(["i","j","k","l"]),str(["m","n","o","p"])}).replace("'", '"')
+    return str([["a","b","c","d"],["e","f","g","h"],["i","j","k","l"],["m","n","o","p"]]).replace("'", '"')
+
 def history():
     # list of user history
     urls=request.get_json()['urls']
@@ -165,7 +168,7 @@ def history():
 
         req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
         html = urlopen(req)
-        soup = BeautifulSoup(html)
+        soup = BeautifulSoup(html,"html.parser")
         data = soup.findAll(text=True)
 
         result = filter(visible, data)
