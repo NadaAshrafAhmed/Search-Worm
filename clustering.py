@@ -1,4 +1,5 @@
 import codecs
+import contextlib
 
 from flask import Flask, render_template, request, json
 # import urllib.request
@@ -90,6 +91,9 @@ def k_means():
 
 def clean(doc):
 
+    doc = re.sub( "[^a-zA-Z0-9\s\\n]", " ", doc )
+    doc = re.sub( "\\s+", " ", doc )
+
     stop = set(stopwords.words('english'))
     exclude = set(string.punctuation)
     lemma = WordNetLemmatizer()
@@ -153,7 +157,7 @@ def visible(element):
 @app.route('/history',methods=["POST"])
 def history():
     # list of user history
-    urls=request.get_json()['urls']
+    urls=list(set(request.get_json()['urls']))
     id = request.get_json()['ID']
     print(id)
 
@@ -164,24 +168,32 @@ def history():
         # mystr = mybytes.decode( "utf8" )
         # # print (mystr)
         # doc =  html2text.html2text( str( mystr ) )
+        try:
+            req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            with contextlib.closing(urlopen(req)) as webpage:
+                html = webpage.read()
+                html = html.decode("UTF-8")
+            # html = urlopen(req)
+            try:
+                soup = BeautifulSoup(html,"html.parser")
+                data = soup.findAll(text=True)
 
-        req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        html = urlopen(req)
-        soup = BeautifulSoup(html,"html.parser")
-        data = soup.findAll(text=True)
+                result = filter(visible, data)
 
-        result = filter(visible, data)
+                arr = list(result)
 
-        arr = list(result)
+                doc = ""
 
-        doc = ""
+                for i in arr:
+                    doc += i
+                    doc += " "
 
-        for i in arr:
-            doc += i
-            doc += "\n"
-
-        documents.append(doc)
-        print( doc )
+                documents.append(doc)
+                print( doc )
+            except Exception as e:
+                 print(e)
+        except Exception as e:
+            print(e)
 
     k_means()
 
@@ -219,12 +231,14 @@ def history():
             for j in i :
                 print(j)
                 k = 0
-                res = search(j,stop= 3)
-                for r in res:
-                    if k<3:
-                        urls1.append(r)
-                        k += 1
-
+                try:
+                    res = search(j,stop= 3)
+                    for r in res:
+                        if k<3:
+                            urls1.append(r)
+                            k += 1
+                except Exception as e:
+                    print( e )
     if len(topic2) > 0:
 
         LDA(topic2,2)
@@ -232,11 +246,14 @@ def history():
         for i in topic_words2:
             for j in i :
                 k = 0
-                res = search(j,stop= 3)
-                for r in res:
-                    if k<3:
-                        urls2.append(r)
-                        k += 1
+                try:
+                    res = search(j,stop= 3)
+                    for r in res:
+                        if k<3:
+                            urls2.append(r)
+                            k += 1
+                except Exception as e:
+                    print( e )
 
     if len(topic3) > 0:
 
@@ -245,11 +262,14 @@ def history():
         for i in topic_words3:
             for j in i :
                 k = 0
-                res = search(j,stop= 3)
-                for r in res:
-                    if k<3:
-                        urls3.append(r)
-                        k += 1
+                try:
+                    res = search(j,stop= 3)
+                    for r in res:
+                        if k<3:
+                            urls3.append(r)
+                            k += 1
+                except Exception as e:
+                    print( e )
 
     if len(topic4) > 0:
 
@@ -258,11 +278,20 @@ def history():
         for i in topic_words4:
             for j in i :
                 k=0
-                res = search(j,stop= 3)
-                for r in res:
-                    if k<3:
-                        urls4.append(r)
-                        k += 1
+                try:
+                    res = search(j,stop= 3)
+                    for r in res:
+                        if k<3:
+                            urls4.append(r)
+                            k += 1
+                except Exception as e:
+                    print( e )
+
+    url1 = list( set( urls1 ) )
+    url2 = list( set( urls2 ) )
+    url3 = list( set( urls3 ) )
+    url4 = list( set( urls4 ) )
+
 
     print("topic1")
     print(str(len(topic_words1)))
@@ -290,10 +319,10 @@ def history():
     for i in urls4:
         print(i)
 
-    all_urls.append(urls1)
-    all_urls.append(urls2)
-    all_urls.append(urls3)
-    all_urls.append(urls4)
+    all_urls.append(url1)
+    all_urls.append(url2)
+    all_urls.append(url3)
+    all_urls.append(url4)
 
     all_urls_str = str(all_urls)
 

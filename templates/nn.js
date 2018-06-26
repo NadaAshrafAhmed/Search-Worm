@@ -33,6 +33,8 @@ function sendHistory(storedMacId,numOfLinks=10){
         xmlhttp.open("POST", "http://127.0.0.1:5000/history");
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xmlhttp.send(JSON.stringify({ID:storedMacId, urls: urls}));
+//        var today = new Date();
+//        chrome.storage.local.set({'lastUpdate':{'day':today.getDate(),'month':today.getMonth()+1,"year":today.getFullYear()}});
 
         xmlhttp.onreadystatechange=function(){
 
@@ -150,7 +152,7 @@ chrome.storage.local.get('machine-id', function(item){
                 var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
                 console.log(diffDays)
 
-                if( diffDays>=0 ){
+                if( diffDays>=4 ){// number of days after we shod run clustring algorithem
 
                     sendHistory(storedMacId,10);
                     showResults();
