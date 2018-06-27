@@ -1,26 +1,20 @@
 import codecs
 import contextlib
 
+import pickle
 from flask import Flask, render_template, request, json
-# import urllib.request
-import html2text
 
 from urllib.request import Request, urlopen
 
-import re
 from bs4 import BeautifulSoup
 
 import pandas as pd
-import numpy as np
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.cluster import KMeans
 
-import glob
-import os
 import re
-import math
 from nltk.corpus import stopwords
 from nltk.stem.wordnet import WordNetLemmatizer
 import string
@@ -30,6 +24,12 @@ from gensim import corpora
 
 from googlesearch import search
 
+from collections import defaultdict
+
+from surprise import Reader, Dataset, accuracy
+
+from surprise import KNNBasic
+from surprise.model_selection import KFold
 
 app = Flask(__name__)
 
@@ -48,7 +48,6 @@ topic_words2 = []
 topic_words3 = []
 topic_words4 = []
 
-
 urls1 = []
 urls2 = []
 urls3 = []
@@ -56,9 +55,47 @@ urls4 = []
 
 all_urls = []
 
+# TODO: calculate freq, append to new words, calculate word id
+# changeable for each user
+id = -1
+new_words = []
+wordFreq = defaultdict(dict)  # must read all previous frequencies for user X
+
+# global for all users
+wordsIDs = defaultdict(dict)
+ratings_dict = {'itemID': list(),
+                'userID': list(),
+                'rating': list()}
+
+
+def collaborative_filter():
+    # edit ratings dict TODO: add nan values to empty ratings! 
+    mx = sum(wordFreq.values())
+    for word in new_words:
+        ratings_dict['rating'].append(float(wordFreq[word]) / mx * 5)  # normalized
+        ratings_dict['itemID'].append(wordsIDs[word])
+        ratings_dict['userID'].append(id)
+
+        df = pd.DataFrame(ratings_dict)
+
+        # A reader is still needed but only the rating_scale param is required.
+        reader = Reader(rating_scale=(0.5, 5.0))
+        # The columns must correspond to user id, item id and ratings (in that order).
+        data = Dataset.load_from_df(df[['userID', 'itemID', 'rating']], reader)
+
+        algo = KNNBasic()
+        kf = KFold(n_splits=3)
+
+        for trainset, testset in kf.split(data):
+            # train and test algorithm.
+            algo.fit(trainset)
+            predictions = algo.test(testset)
+
+            # Compute and print Root Mean Squared Error
+            accuracy.rmse(predictions, verbose=True)
+
+
 def k_means():
-
-
     vectorizer = CountVectorizer()
     X = vectorizer.fit_transform(documents)
 
@@ -70,7 +107,7 @@ def k_means():
     tfidf = transformer.fit_transform(X)
     print(tfidf.shape)
 
-    num_clusters = 4 # Change it according to your data.
+    num_clusters = 4  # Change it according to your data.
     km = KMeans(n_clusters=num_clusters)
     km.fit(tfidf)
     c = km.labels_.tolist()
@@ -78,21 +115,41 @@ def k_means():
     for i in c:
         clusters.append(i)
 
-    idea = {'Idea': documents, 'Cluster': clusters}  # Creating dict having doc with the corresponding cluster number.
-    frame = pd.DataFrame(idea, index=[clusters], columns=['Idea', 'Cluster'])  # Converting it into a dataframe.
+    # idea = {'Idea': documents, 'Cluster': clusters}  # Creating dict having doc with the corresponding cluster number.
+    # frame = pd.DataFrame(idea, index=[clusters], columns=['Idea', 'Cluster'])  # Converting it into a dataframe.
+    #
+    # print("\n")
+    # print(frame)  # Print the doc with the labeled cluster number.
+    # print("\n")
+    # print(frame['Cluster'].value_counts())  # Print the counts of doc belonging to each cluster.
 
-    print("\n")
-    print(frame)  # Print the doc with the labeled cluster number.
-    print("\n")
-    print(frame['Cluster'].value_counts())  # Print the counts of doc belonging to each cluster.
+    print("Top terms per cluster:")
+    order_centroids = km.cluster_centers_.argsort()[:, ::-1]
+    terms = vectorizer.get_feature_names()
+    for i in range(num_clusters):
+        print("Cluster %d:" % i, )
+        for ind in order_centroids[i, :10]:
+            print(' %s' % terms[ind], )
+        print()
 
-    # return "7mada"
+    # save to disk, not sure if we need it (small size!)
+    filename = 'finalized_model.sav'
+    pickle.dump(km, open(filename, 'wb'))
+
+    # plotting for presentation (not working, yet!)
+
+    # pca = PCA(n_components=4).fit(X)
+    # centers2D = pca.transform(km.cluster_centers_)
+    #
+    # plt.hold(True)
+    # plt.scatter(centers2D[:, 0], centers2D[:, 1],
+    #             marker='x', s=200, linewidths=3, c='r')
+    # plt.show()  # not required if using ipython notebook
 
 
 def clean(doc):
-
-    doc = re.sub( "[^a-zA-Z0-9\s\\n]", " ", doc )
-    doc = re.sub( "\\s+", " ", doc )
+    doc = re.sub("[^a-zA-Z0-9\s\\n]", " ", doc)
+    doc = re.sub("\\s+", " ", doc)
 
     stop = set(stopwords.words('english'))
     exclude = set(string.punctuation)
@@ -104,8 +161,7 @@ def clean(doc):
     return normalized
 
 
-def LDA( doc_complete , n ):
-
+def LDA(doc_complete, n):
     doc_clean = [clean(doc).split() for doc in doc_complete]
 
     '''Topic modeling'''
@@ -124,12 +180,12 @@ def LDA( doc_complete , n ):
 
     arr = ldamodel.print_topics(num_topics=3, num_words=3)
 
-    for i in range(0,3):
+    for i in range(0, 3):
         topn_words = [word for word, prob in ldamodel.show_topic(i, topn=3)]
 
-        if n==1 :
+        if n == 1:
             topic_words1.append(topn_words)
-        elif n==2 :
+        elif n == 2:
             topic_words2.append(topn_words)
         elif n == 3:
             topic_words3.append(topn_words)
@@ -138,9 +194,8 @@ def LDA( doc_complete , n ):
 
 
 
-    # for i in topic_words1:
-    #     print(i)
-
+            # for i in topic_words1:
+            #     print(i)
 
 
 def visible(element):
@@ -154,15 +209,15 @@ def visible(element):
 # def history1():
 #     # return str({str(["a","b","c","d"]),str(["e","f","g","h"]),str(["i","j","k","l"]),str(["m","n","o","p"])}).replace("'", '"')
 #     return str([["a","b","c","d"],["e","f","g","h"],["i","j","k","l"],["m","n","o","p"]]).replace("'", '"')
-@app.route('/history',methods=["POST"])
+@app.route('/history', methods=["POST"])
 def history():
     # list of user history
-    urls=list(set(request.get_json()['urls']))
+    urls = list(set(request.get_json()['urls']))
     id = request.get_json()['ID']
     print(id)
 
     for url in urls:
-        print( url )
+        print(url)
         # req = Request(url, headers={'User-Agent': 'Mozilla/5.0'} )
         # mybytes = urlopen( req ).read()
         # mystr = mybytes.decode( "utf8" )
@@ -175,7 +230,7 @@ def history():
                 html = html.decode("UTF-8")
             # html = urlopen(req)
             try:
-                soup = BeautifulSoup(html,"html.parser")
+                soup = BeautifulSoup(html, "html.parser")
                 data = soup.findAll(text=True)
 
                 result = filter(visible, data)
@@ -188,32 +243,36 @@ def history():
                     doc += i
                     doc += " "
 
+                doc = clean(doc)  # better acuracy for k-means
+
                 documents.append(doc)
-                print( doc )
+                # print(doc)
             except Exception as e:
-                 print(e)
+                print(e)
         except Exception as e:
             print(e)
 
     k_means()
 
-    for i in range(0,len(clusters)):
+    for i in range(0, len(clusters)):
 
-        if clusters[i]==0:
+        if clusters[i] == 0:
             topic1.append(documents[i])
 
-        elif clusters[i]==1:
+        elif clusters[i] == 1:
             topic2.append(documents[i])
 
-        elif clusters[i]==2:
+        elif clusters[i] == 2:
             topic3.append(documents[i])
 
-        elif clusters[i]==3:
+        elif clusters[i] == 3:
             topic4.append(documents[i])
 
-    if len(topic1)>0:
+    LDA_results_file = open('LDA-results.txt', 'a+')
 
-        LDA(topic1,1)
+    if len(topic1) > 0:
+
+        LDA(topic1, 1)
 
         # c=0
         #
@@ -228,78 +287,88 @@ def history():
         # print("c:   " + str(c))
 
         for i in topic_words1:
-            for j in i :
-                print(j)
+            for j in i:
                 k = 0
+                LDA_results_file.write(j)
+                LDA_results_file.write(' ')
                 try:
-                    res = search(j,stop= 3)
+                    res = search(j, stop=3)
                     for r in res:
-                        if k<3:
+                        if k < 3:
                             urls1.append(r)
                             k += 1
                 except Exception as e:
-                    print( e )
+                    print(e)
+            LDA_results_file.write('\n')
     if len(topic2) > 0:
 
-        LDA(topic2,2)
+        LDA(topic2, 2)
 
         for i in topic_words2:
-            for j in i :
+            for j in i:
                 k = 0
+                LDA_results_file.write(j)
+                LDA_results_file.write(' ')
                 try:
-                    res = search(j,stop= 3)
+                    res = search(j, stop=3)
                     for r in res:
-                        if k<3:
+                        if k < 3:
                             urls2.append(r)
                             k += 1
                 except Exception as e:
-                    print( e )
+                    print(e)
+            LDA_results_file.write('\n')
 
     if len(topic3) > 0:
 
-        LDA(topic3,3)
+        LDA(topic3, 3)
 
         for i in topic_words3:
-            for j in i :
+            for j in i:
                 k = 0
+                LDA_results_file.write(j)
+                LDA_results_file.write(' ')
                 try:
-                    res = search(j,stop= 3)
+                    res = search(j, stop=3)
                     for r in res:
-                        if k<3:
+                        if k < 3:
                             urls3.append(r)
                             k += 1
                 except Exception as e:
-                    print( e )
+                    print(e)
+            LDA_results_file.write('\n')
 
     if len(topic4) > 0:
 
-        LDA(topic4,4)
+        LDA(topic4, 4)
 
         for i in topic_words4:
-            for j in i :
-                k=0
+            for j in i:
+                k = 0
+                LDA_results_file.write('j')
+                LDA_results_file.write(' ')
                 try:
-                    res = search(j,stop= 3)
+                    res = search(j, stop=3)
                     for r in res:
-                        if k<3:
+                        if k < 3:
                             urls4.append(r)
                             k += 1
                 except Exception as e:
-                    print( e )
+                    print(e)
+            LDA_results_file.write('\n')
 
-    url1 = list( set( urls1 ) )
-    url2 = list( set( urls2 ) )
-    url3 = list( set( urls3 ) )
-    url4 = list( set( urls4 ) )
+    LDA_results_file.close()
 
+    url1 = list(set(urls1))
+    url2 = list(set(urls2))
+    url3 = list(set(urls3))
+    url4 = list(set(urls4))
 
     print("topic1")
     print(str(len(topic_words1)))
     print(topic_words1)
     for i in urls1:
-       print(i)
-
-
+        print(i)
 
     print("topic2")
     print(str(len(topic_words2)))
@@ -328,26 +397,26 @@ def history():
 
     all_urls_str = all_urls_str.replace("'", '"')
 
-    return (all_urls_str)
+    return all_urls_str
 
 
-@app.route('/save_data',methods=["POST"])
+@app.route('/save_data', methods=["POST"])
 def save_data():
     id = request.form.get('id')
-    print(id)
+    # print(id)
 
     return "Thank you !"
 
 
-@app.route('/id_exist',methods=["POST"])
+@app.route('/id_exist', methods=["POST"])
 def id_exist():
-
     id = request.get_json()['ID']
-    print(id)
+    # print(id)
 
-    #check database ..
+    # check database ..
 
     return ("true")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
