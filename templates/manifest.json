@@ -21,5 +21,9 @@
     "default_popup": "popup.html"        // optional
    },
 
-  "permissions": ["history","http://127.0.0.1:5000/","storage","tabs"]
+  "permissions": ["history",
+                  "http://127.0.0.1:5000/",
+                  "storage",
+                  "tabs",
+                  "unlimitedstorage"]
 }

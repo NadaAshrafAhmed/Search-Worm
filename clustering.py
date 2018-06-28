@@ -27,11 +27,11 @@ import string
 
 import gensim
 from gensim import corpora
-
+import db
 from googlesearch import search
-
-
 app = Flask(__name__)
+
+
 
 # k is 4
 
@@ -93,6 +93,7 @@ def clean(doc):
 
     doc = re.sub( "[^a-zA-Z0-9\s\\n]", " ", doc )
     doc = re.sub( "\\s+", " ", doc )
+    doc = re.sub( '([A-Z]{1})', r'_\1', doc ).lower()
 
     stop = set(stopwords.words('english'))
     exclude = set(string.punctuation)
@@ -187,7 +188,7 @@ def history():
                 for i in arr:
                     doc += i
                     doc += " "
-
+                doc=clean( doc )
                 documents.append(doc)
                 print( doc )
             except Exception as e:
@@ -228,8 +229,10 @@ def history():
         # print("c:   " + str(c))
 
         for i in topic_words1:
+            db.add_topic(i[0],i[1],i[2])
             for j in i :
                 print(j)
+
                 k = 0
                 try:
                     res = search(j,stop= 3)
@@ -244,6 +247,7 @@ def history():
         LDA(topic2,2)
 
         for i in topic_words2:
+            db.add_topic( i[0], i[1], i[2] )
             for j in i :
                 k = 0
                 try:
@@ -260,6 +264,7 @@ def history():
         LDA(topic3,3)
 
         for i in topic_words3:
+            db.add_topic( i[0], i[1], i[2] )
             for j in i :
                 k = 0
                 try:
@@ -276,6 +281,7 @@ def history():
         LDA(topic4,4)
 
         for i in topic_words4:
+            db.add_topic( i[0], i[1], i[2] )
             for j in i :
                 k=0
                 try:
@@ -286,6 +292,10 @@ def history():
                             k += 1
                 except Exception as e:
                     print( e )
+    db.add_word( id, topic_words1[0] + topic_words1[1] + topic_words1[2]
+                   + topic_words2[0] + topic_words2[1] + topic_words2[2]
+                   + topic_words3[0] + topic_words3[1] + topic_words3[2]
+                   + topic_words4[0] + topic_words4[1] + topic_words4[2])
 
     url1 = list( set( urls1 ) )
     url2 = list( set( urls2 ) )
@@ -334,7 +344,12 @@ def history():
 @app.route('/save_data',methods=["POST"])
 def save_data():
     id = request.form.get('id')
+    name=request.form.get('name')
+    age = request.form.get( 'age' )
+    nation=request.form.get('nation')
     print(id)
+
+    db.add_user(id,name,age,nation)
 
     return "Thank you !"
 
@@ -344,10 +359,11 @@ def id_exist():
 
     id = request.get_json()['ID']
     print(id)
-
+    db.user_exist(id)
     #check database ..
-
-    return ("true")
+    if(db.user_exist(id)):
+        return ("true")
+    return ("false")
 
 if __name__ == '__main__':
     app.run(debug=True)
