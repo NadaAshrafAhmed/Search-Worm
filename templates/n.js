@@ -1,8 +1,36 @@
+chrome.storage.local.get('background', function (img) {
+    if (img['background'] == undefined) {
+        chrome.storage.local.set({'background': "../img/nature.jpg"});
+        change_background("../img/nature.jpg");
+    }else {
+        change_background(img['background']);
+    }
+});
+
+document.getElementById('upload-image').addEventListener('change', readURL, true);
+function readURL() {
+    var file = document.getElementById("upload-image").files[0];
+    var reader = new FileReader();
+    reader.onloadend = function () {
+        change_background(reader.result);
+    };
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+    }
+}
+function change_background(url) {
+    document.getElementsByTagName("BODY")[0].style.backgroundImage = "url(" + url + ")";
+    chrome.storage.local.set({'background': url});
+}
+
 chrome.storage.local.get('offlinePages', function (pages) {
         var downloaded = false;
         if (pages['offlinePages']) {
             for (var i = 0; i < pages['offlinePages'].length; i++) {
                 var link = document.getElementById('dropdown');
+                if (link == undefined)
+                    return;
                 link.innerHTML += "<a id='" + i + "'>" + pages['offlinePages'][i]['url'] + "</a>";
             }
             for (i = 0; i < pages['offlinePages'].length; i++) {
@@ -25,6 +53,8 @@ chrome.storage.local.get('offlinePages', function (pages) {
 
 function save_remove(tablink) {
     var link = document.getElementById('download');
+    if (link == undefined)
+        return;
     if (link.innerHTML == "Save Page") {
         link.innerHTML = "Saving...";
         console.log("download");
@@ -45,7 +75,7 @@ function save_remove(tablink) {
                             if (res != "") {
                                 pages['offlinePages'].push({
                                     'url': tablink,
-                                    'html': res 
+                                    'html': res
                                 });
                                 chrome.storage.local.set({'offlinePages': pages['offlinePages']});
                                 var id = pages['offlinePages'].length - 1;
@@ -154,7 +184,9 @@ chrome.tabs.getSelected(null, function (tab) {
         if (pages['offlinePages']) {
             for (var i = 0; i < pages['offlinePages'].length; i++) {
                 if (pages['offlinePages'][i]['url'] == tablink) {
-                    var link = document.getElementById('download')
+                    var link = document.getElementById('download');
+                    if (link == undefined)
+                        return;
                     link.innerHTML = "Delete Page";
                     downloaded = true;
                     link.addEventListener('click', function () {
@@ -171,6 +203,8 @@ chrome.tabs.getSelected(null, function (tab) {
 
         if (!downloaded) {
             var link = document.getElementById('download');
+            if (link == undefined)
+                return;
             link.innerHTML = "Save Page";
             link.addEventListener('click', function () {
                 save_remove(tablink);
@@ -181,15 +215,17 @@ chrome.tabs.getSelected(null, function (tab) {
 
 
 var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
-for (i = 0; i < dropdown.length; i++) {
-    dropdown[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        var dropdownContent = this.nextElementSibling;
-        if (dropdownContent.style.display === "block") {
-            dropdownContent.style.display = "none";
-        } else {
-            dropdownContent.style.display = "block";
-        }
-    });
+if (dropdown != undefined) {
+    var i;
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
 }
