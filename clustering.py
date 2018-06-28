@@ -66,7 +66,8 @@ wordsIDs = defaultdict(dict)
 ratings_dict = {'itemID': list(),
                 'userID': list(),
                 'rating': list()}
-predictions = 0
+
+top_n = defaultdict(list)
 
 
 def write_wid_dic():
@@ -133,7 +134,7 @@ def calc_collaborative_param():
     print(wordsIDs)
 
 
-def get_top_n(n):
+def get_top_n(predictions, n):
     '''Return the top-N recommendation for each user from a set of predictions.
 
     Args:
@@ -149,7 +150,6 @@ def get_top_n(n):
 
     print("get top n")
     # First map the predictions to each user.
-    top_n = defaultdict(list)
     for uid, iid, true_r, est, _ in predictions:
         top_n[uid].append((iid, est))
 
@@ -194,23 +194,22 @@ def collaborative_filter():
     trainset = data.build_full_trainset()
 
     new_data = trainset.build_anti_testset()
-    global predictions
     predictions = algo.test(new_data)
+    get_top_n(predictions, n=3)
 
 
 def get_suggested_URLs():
-    top_n = get_top_n(n=3)
-    new_items_ids = []
-    for uid, user_ratings in top_n.items():
-        print(uid, [iid for (iid, _) in user_ratings])
-    # new_items_words = []
-    #
-    # for ids in new_items_ids:
-    #     for word, id in wordsIDs.iteritems():  # for name, age in list.items():  (for Python 3.x)
-    #         if id == ids:
-    #             new_items_words.append(word)
-    #
-    # print(new_items_words)
+    new_items_words = []
+
+    # for all users get item id
+    # for uid, user_ratings in top_n.items():
+    #     print(uid, [iid for (iid, _) in user_ratings])
+
+    new_items = top_n.get(id)
+    for iid, _ in new_items:
+        for word, wid in wordsIDs.iteritems():
+            if wid == iid:
+                new_items_words.append(word)
 
 
 def k_means():
