@@ -42,7 +42,7 @@ def add_word(user_id, words):
     updated_words = list(set(updated_words))
 
     for word in new_words:
-        cur.execute( "INSERT INTO words VALUES ('" + word + "');" )
+        # cur.execute( "INSERT INTO words VALUES ('" + word + "');" )#cheak if word is uniqe or get all the words from topic or user word ana delete table words
         cur.execute( "INSERT INTO userword VALUES ('" + user_id + "', '"+word+"', '1');" )
     for word in updated_words:
         cur.execute( "UPDATE userword SET frq='" + str(user_words[word]) + "' WHERE user_id= '"+user_id+"' and word= '"+word+"';" )

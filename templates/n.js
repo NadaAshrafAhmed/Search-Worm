@@ -36,7 +36,6 @@ function save_remove(tablink) {
 
                     xmlhttp.open("POST", "http://127.0.0.1:5000/get_html");
                     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
                     xmlhttp.send(JSON.stringify({ID: item['machine-id'], url: tablink}));
 
                     xmlhttp.onreadystatechange = function () {

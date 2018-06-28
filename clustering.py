@@ -91,7 +91,7 @@ def k_means():
 
 def clean(doc):
 
-    doc = re.sub( "[^a-zA-Z0-9\s\\n]", " ", doc )
+    doc = re.sub( "[^a-zA-Z\s\\n]", " ", doc )
     doc = re.sub( "\\s+", " ", doc )
     doc = re.sub( '([A-Z]{1})', r'_\1', doc ).lower()
 
@@ -152,10 +152,11 @@ def visible(element):
     return True
 
 
-@app.route('/history',methods=["POST"])
 def history1():
-#     # return str({str(["a","b","c","d"]),str(["e","f","g","h"]),str(["i","j","k","l"]),str(["m","n","o","p"])}).replace("'", '"')
     return str([["a","b","c","d"],["e","f","g","h"],["i","j","k","l"],["m","n","o","p"]]).replace("'", '"')
+
+
+@app.route('/history',methods=["POST"])
 def history():
     # list of user history
     urls=list(set(request.get_json()['urls']))
