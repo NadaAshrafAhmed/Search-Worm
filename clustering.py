@@ -54,9 +54,9 @@ urls3 = []
 urls4 = []
 
 all_urls = []
+all_topics = []
 
-# TODO: calculate freq, append to new words, calculate word id
-# changeable for each user
+# changeable for each use   r
 id = -1
 new_words = []
 wordFreq = defaultdict(dict)  # must read all previous frequencies for user X
@@ -66,33 +66,100 @@ wordsIDs = defaultdict(dict)
 ratings_dict = {'itemID': list(),
                 'userID': list(),
                 'rating': list()}
+predictions = 0
+
+
+def calc_collaborative_param():
+    for word in new_words:
+        if word in wordsIDs.items():
+            ""
+        else:
+            wordsIDs[word] = wordsIDs.__len__() #TODO: error!!
+        if word in wordFreq:
+            wordFreq[word] = wordFreq[word] + 1
+        else:
+            wordFreq[word] = 1
+
+    print(wordFreq)
+    print(wordsIDs)
+
+
+def get_top_n(n):
+    '''Return the top-N recommendation for each user from a set of predictions.
+
+    Args:
+        predictions(list of Prediction objects): The list of predictions, as
+            returned by the test method of an algorithm.
+        n(int): The number of recommendation to output for each user. Default
+            is 10.
+
+    Returns:
+    A dict where keys are user (raw) ids and values are lists of tuples:
+        [(raw item id, rating estimation), ...] of size n.
+    '''
+
+    # First map the predictions to each user.
+    top_n = defaultdict(list)
+    for uiid, iid, true_r, est, _ in predictions:
+        print(uiid)
+        top_n[id].append((iid, est))
+
+    # Then sort the predictions for each user and retrieve the k highest ones.
+    for user_ratings in top_n.items():
+        user_ratings.sort(key=lambda x: x[1], reverse=True)
+        top_n[id] = user_ratings[:n]
+
+    return top_n
 
 
 def collaborative_filter():
-    # edit ratings dict TODO: add nan values to empty ratings! 
+    # edit ratings dict
     mx = sum(wordFreq.values())
     for word in new_words:
         ratings_dict['rating'].append(float(wordFreq[word]) / mx * 5)  # normalized
         ratings_dict['itemID'].append(wordsIDs[word])
         ratings_dict['userID'].append(id)
 
-        df = pd.DataFrame(ratings_dict)
+    print(ratings_dict)
+    df = pd.DataFrame(ratings_dict)
 
-        # A reader is still needed but only the rating_scale param is required.
-        reader = Reader(rating_scale=(0.5, 5.0))
-        # The columns must correspond to user id, item id and ratings (in that order).
-        data = Dataset.load_from_df(df[['userID', 'itemID', 'rating']], reader)
+    # A reader is still needed but only the rating_scale param is required.
+    reader = Reader(rating_scale=(0.0, 5.0))
+    # The columns must correspond to user id, item id and ratings (in that order).
+    data = Dataset.load_from_df(df[['userID', 'itemID', 'rating']], reader)
+    # define a cross-validation iterator
+    kf = KFold(n_splits=3)
 
-        algo = KNNBasic()
-        kf = KFold(n_splits=3)
+    algo = KNNBasic()
 
-        for trainset, testset in kf.split(data):
-            # train and test algorithm.
-            algo.fit(trainset)
-            predictions = algo.test(testset)
+    for trainset, testset in kf.split(data):
+        # train and test algorithm.
+        algo.fit(trainset)
+        kf_predictions = algo.test(testset)
 
-            # Compute and print Root Mean Squared Error
-            accuracy.rmse(predictions, verbose=True)
+        # Compute and print Root Mean Squared Error
+        accuracy.rmse(kf_predictions, verbose=True)
+
+    trainset = data.build_full_trainset()
+
+    new_data = trainset.build_anti_testset()
+    global predictions
+    predictions = algo.test(new_data)
+
+
+def get_suggested_URLs():
+    top_n = get_top_n(n=3)
+    new_items_ids = []
+    for user_ratings in top_n.items():
+        print(new_items_ids=[iid for (iid, _) in user_ratings])
+    new_items_words = []
+
+    for ids in new_items_ids:
+        for word, id in wordsIDs.iteritems():  # for name, age in list.items():  (for Python 3.x)
+            if id == ids:
+                new_items_words.append(word)
+
+    print(new_items_words)
 
 
 def k_means():
@@ -105,7 +172,7 @@ def k_means():
 
     transformer = TfidfTransformer(smooth_idf=False)
     tfidf = transformer.fit_transform(X)
-    print(tfidf.shape)
+    #print(tfidf.shape)
 
     num_clusters = 4  # Change it according to your data.
     km = KMeans(n_clusters=num_clusters)
@@ -123,18 +190,18 @@ def k_means():
     # print("\n")
     # print(frame['Cluster'].value_counts())  # Print the counts of doc belonging to each cluster.
 
-    print("Top terms per cluster:")
-    order_centroids = km.cluster_centers_.argsort()[:, ::-1]
-    terms = vectorizer.get_feature_names()
-    for i in range(num_clusters):
-        print("Cluster %d:" % i, )
-        for ind in order_centroids[i, :10]:
-            print(' %s' % terms[ind], )
-        print()
+    # print("Top terms per cluster:")
+    # order_centroids = km.cluster_centers_.argsort()[:, ::-1]
+    # terms = vectorizer.get_feature_names()
+    # for i in range(num_clusters):
+    #     print("Cluster %d:" % i, )
+    #     for ind in order_centroids[i, :10]:
+    #         print(' %s' % terms[ind], )
+    #     print()
 
     # save to disk, not sure if we need it (small size!)
-    filename = 'finalized_model.sav'
-    pickle.dump(km, open(filename, 'wb'))
+    # filename = 'finalized_model.sav'
+    # pickle.dump(km, open(filename, 'wb'))
 
     # plotting for presentation (not working, yet!)
 
@@ -213,11 +280,12 @@ def visible(element):
 def history():
     # list of user history
     urls = list(set(request.get_json()['urls']))
-    id = request.get_json()['ID']
+    #id = request.get_json()['ID']
+    id = 3
     print(id)
-
+    print("Reading URLS")
     for url in urls:
-        print(url)
+        #print(url)
         # req = Request(url, headers={'User-Agent': 'Mozilla/5.0'} )
         # mybytes = urlopen( req ).read()
         # mystr = mybytes.decode( "utf8" )
@@ -243,7 +311,7 @@ def history():
                     doc += i
                     doc += " "
 
-                doc = clean(doc)  # better acuracy for k-means
+                doc = clean(doc)  # better accuracy for k-means
 
                 documents.append(doc)
                 # print(doc)
@@ -251,7 +319,7 @@ def history():
                 print(e)
         except Exception as e:
             print(e)
-
+    print("Starting k-means")
     k_means()
 
     for i in range(0, len(clusters)):
@@ -287,10 +355,12 @@ def history():
         # print("c:   " + str(c))
 
         for i in topic_words1:
+            all_topics.append(i)
             for j in i:
                 k = 0
                 LDA_results_file.write(j)
                 LDA_results_file.write(' ')
+                new_words.append(j)
                 try:
                     res = search(j, stop=3)
                     for r in res:
@@ -305,10 +375,12 @@ def history():
         LDA(topic2, 2)
 
         for i in topic_words2:
+            all_topics.append(i)
             for j in i:
                 k = 0
                 LDA_results_file.write(j)
                 LDA_results_file.write(' ')
+                new_words.append(j)
                 try:
                     res = search(j, stop=3)
                     for r in res:
@@ -324,10 +396,12 @@ def history():
         LDA(topic3, 3)
 
         for i in topic_words3:
+            all_topics.append(i)
             for j in i:
                 k = 0
                 LDA_results_file.write(j)
                 LDA_results_file.write(' ')
+                new_words.append(j)
                 try:
                     res = search(j, stop=3)
                     for r in res:
@@ -343,10 +417,12 @@ def history():
         LDA(topic4, 4)
 
         for i in topic_words4:
+            all_topics.append(i)
             for j in i:
                 k = 0
                 LDA_results_file.write('j')
                 LDA_results_file.write(' ')
+                new_words.append(j)
                 try:
                     res = search(j, stop=3)
                     for r in res:
@@ -358,6 +434,7 @@ def history():
             LDA_results_file.write('\n')
 
     LDA_results_file.close()
+    calc_collaborative_param()
 
     url1 = list(set(urls1))
     url2 = list(set(urls2))
@@ -367,26 +444,26 @@ def history():
     print("topic1")
     print(str(len(topic_words1)))
     print(topic_words1)
-    for i in urls1:
-        print(i)
+    # for i in urls1:
+    #     print(i)
 
     print("topic2")
     print(str(len(topic_words2)))
     print(topic_words2)
-    for i in urls2:
-        print(i)
+    # for i in urls2:
+    #     print(i)
 
     print("topic3")
     print(str(len(topic_words3)))
     print(topic_words3)
-    for i in urls3:
-        print(i)
+    # for i in urls3:
+    #     print(i)
 
     print("topic4")
     print(str(len(topic_words4)))
     print(topic_words4)
-    for i in urls4:
-        print(i)
+    # for i in urls4:
+    #     print(i)
 
     all_urls.append(url1)
     all_urls.append(url2)
@@ -396,6 +473,30 @@ def history():
     all_urls_str = str(all_urls)
 
     all_urls_str = all_urls_str.replace("'", '"')
+    print("calculating param")
+    calc_collaborative_param()
+    print("Start filter")
+    collaborative_filter()
+    print("suggested URLS")
+    get_suggested_URLs()
+
+    documents.clear()
+    clusters.clear()
+
+    topic1.clear()
+    topic2.clear()
+    topic3.clear()
+    topic4.clear()
+
+    topic_words1.clear()
+    topic_words2.clear()
+    topic_words3.clear()
+    topic_words4.clear()
+
+    urls1.clear()
+    urls2.clear()
+    urls3.clear()
+    urls4.clear()
 
     return all_urls_str
 
@@ -410,7 +511,8 @@ def save_data():
 
 @app.route('/id_exist', methods=["POST"])
 def id_exist():
-    id = request.get_json()['ID']
+    #id = request.get_json()['ID']
+    id = 3
     # print(id)
 
     # check database ..
