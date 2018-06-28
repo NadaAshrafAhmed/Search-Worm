@@ -57,7 +57,7 @@ all_urls = []
 all_topics = []
 
 # changeable for each use   r
-id = -1
+id = 2
 new_words = []
 wordFreq = defaultdict(dict)  # must read all previous frequencies for user X
 
@@ -69,18 +69,67 @@ ratings_dict = {'itemID': list(),
 predictions = 0
 
 
+def write_wid_dic():
+    file = open('wid-dic.txt', 'a+')
+    file.write(str(wordsIDs.__len__()))
+    file.write('\n')
+    for word, id in wordsIDs.items():
+        file.write(word)
+        file.write(' ')
+        file.write(str(id))
+        file.write('\n')
+
+    file.write('\n')
+    for item in ratings_dict['itemID']:
+        file.write(str(item))
+        file.write(' ')
+    file.write('\n')
+    for user in ratings_dict['userID']:
+        file.write(str(user))
+        file.write(' ')
+    file.write('\n')
+    for rate in ratings_dict['rating']:
+        file.write(str(rate))
+        file.write(' ')
+    file.write('\n')
+    file.close()
+
+
+def read_wid_dic():
+    file = open('wid-dic.txt', 'r')
+    len = int(file.readline())
+    for i in range(0, len):
+        w_id = file.readline().split()
+        wordsIDs[w_id[0]] = int(w_id[1])
+
+    ratings_dict['itemID'] = file.readline().strip('\n').split(' ')
+    ratings_dict['userID'] = file.readline().strip('\n').split(' ')
+    ratings_dict['rating'] = file.readline().strip('\n').split(' ')
+
+    for i in range(0, ratings_dict['itemID'].__len__()):
+        ratings_dict['itemID'][i] = int(ratings_dict['itemID'][i])
+
+    for i in range(0, ratings_dict['userID'].__len__()):
+        ratings_dict['userID'][i] = int(ratings_dict['userID'][i])
+
+    for i in range(0, ratings_dict['rating'].__len__()):
+        ratings_dict['rating'][i] = float(ratings_dict['rating'][i])
+
+    file.close()
+
+
 def calc_collaborative_param():
     for word in new_words:
-        if word in wordsIDs.items():
-            ""
-        else:
-            wordsIDs[word] = wordsIDs.__len__() #TODO: error!!
+        if word not in wordsIDs:
+            wordsIDs[word] = wordsIDs.__len__()
         if word in wordFreq:
-            wordFreq[word] = wordFreq[word] + 1
+            wordFreq[word] += 1
         else:
             wordFreq[word] = 1
 
+    print("Words freq")
     print(wordFreq)
+    print("Words ID")
     print(wordsIDs)
 
 
@@ -98,16 +147,16 @@ def get_top_n(n):
         [(raw item id, rating estimation), ...] of size n.
     '''
 
+    print("get top n")
     # First map the predictions to each user.
     top_n = defaultdict(list)
-    for uiid, iid, true_r, est, _ in predictions:
-        print(uiid)
-        top_n[id].append((iid, est))
+    for uid, iid, true_r, est, _ in predictions:
+        top_n[uid].append((iid, est))
 
     # Then sort the predictions for each user and retrieve the k highest ones.
-    for user_ratings in top_n.items():
+    for uid, user_ratings in top_n.items():
         user_ratings.sort(key=lambda x: x[1], reverse=True)
-        top_n[id] = user_ratings[:n]
+        top_n[uid] = user_ratings[:n]
 
     return top_n
 
@@ -115,11 +164,14 @@ def get_top_n(n):
 def collaborative_filter():
     # edit ratings dict
     mx = sum(wordFreq.values())
+    global new_words
+    new_words = list(set(new_words))
     for word in new_words:
         ratings_dict['rating'].append(float(wordFreq[word]) / mx * 5)  # normalized
         ratings_dict['itemID'].append(wordsIDs[word])
         ratings_dict['userID'].append(id)
 
+    print("rating dict")
     print(ratings_dict)
     df = pd.DataFrame(ratings_dict)
 
@@ -136,7 +188,6 @@ def collaborative_filter():
         # train and test algorithm.
         algo.fit(trainset)
         kf_predictions = algo.test(testset)
-
         # Compute and print Root Mean Squared Error
         accuracy.rmse(kf_predictions, verbose=True)
 
@@ -150,16 +201,16 @@ def collaborative_filter():
 def get_suggested_URLs():
     top_n = get_top_n(n=3)
     new_items_ids = []
-    for user_ratings in top_n.items():
-        print(new_items_ids=[iid for (iid, _) in user_ratings])
-    new_items_words = []
-
-    for ids in new_items_ids:
-        for word, id in wordsIDs.iteritems():  # for name, age in list.items():  (for Python 3.x)
-            if id == ids:
-                new_items_words.append(word)
-
-    print(new_items_words)
+    for uid, user_ratings in top_n.items():
+        print(uid, [iid for (iid, _) in user_ratings])
+    # new_items_words = []
+    #
+    # for ids in new_items_ids:
+    #     for word, id in wordsIDs.iteritems():  # for name, age in list.items():  (for Python 3.x)
+    #         if id == ids:
+    #             new_items_words.append(word)
+    #
+    # print(new_items_words)
 
 
 def k_means():
@@ -172,7 +223,7 @@ def k_means():
 
     transformer = TfidfTransformer(smooth_idf=False)
     tfidf = transformer.fit_transform(X)
-    #print(tfidf.shape)
+    # print(tfidf.shape)
 
     num_clusters = 4  # Change it according to your data.
     km = KMeans(n_clusters=num_clusters)
@@ -182,36 +233,36 @@ def k_means():
     for i in c:
         clusters.append(i)
 
-    # idea = {'Idea': documents, 'Cluster': clusters}  # Creating dict having doc with the corresponding cluster number.
-    # frame = pd.DataFrame(idea, index=[clusters], columns=['Idea', 'Cluster'])  # Converting it into a dataframe.
-    #
-    # print("\n")
-    # print(frame)  # Print the doc with the labeled cluster number.
-    # print("\n")
-    # print(frame['Cluster'].value_counts())  # Print the counts of doc belonging to each cluster.
+        # idea = {'Idea': documents, 'Cluster': clusters}  # Creating dict having doc with the corresponding cluster number.
+        # frame = pd.DataFrame(idea, index=[clusters], columns=['Idea', 'Cluster'])  # Converting it into a dataframe.
+        #
+        # print("\n")
+        # print(frame)  # Print the doc with the labeled cluster number.
+        # print("\n")
+        # print(frame['Cluster'].value_counts())  # Print the counts of doc belonging to each cluster.
 
-    # print("Top terms per cluster:")
-    # order_centroids = km.cluster_centers_.argsort()[:, ::-1]
-    # terms = vectorizer.get_feature_names()
-    # for i in range(num_clusters):
-    #     print("Cluster %d:" % i, )
-    #     for ind in order_centroids[i, :10]:
-    #         print(' %s' % terms[ind], )
-    #     print()
+        # print("Top terms per cluster:")
+        # order_centroids = km.cluster_centers_.argsort()[:, ::-1]
+        # terms = vectorizer.get_feature_names()
+        # for i in range(num_clusters):
+        #     print("Cluster %d:" % i, )
+        #     for ind in order_centroids[i, :10]:
+        #         print(' %s' % terms[ind], )
+        #     print()
 
-    # save to disk, not sure if we need it (small size!)
-    # filename = 'finalized_model.sav'
-    # pickle.dump(km, open(filename, 'wb'))
+        # save to disk, not sure if we need it (small size!)
+        # filename = 'finalized_model.sav'
+        # pickle.dump(km, open(filename, 'wb'))
 
-    # plotting for presentation (not working, yet!)
+        # plotting for presentation (not working, yet!)
 
-    # pca = PCA(n_components=4).fit(X)
-    # centers2D = pca.transform(km.cluster_centers_)
-    #
-    # plt.hold(True)
-    # plt.scatter(centers2D[:, 0], centers2D[:, 1],
-    #             marker='x', s=200, linewidths=3, c='r')
-    # plt.show()  # not required if using ipython notebook
+        # pca = PCA(n_components=4).fit(X)
+        # centers2D = pca.transform(km.cluster_centers_)
+        #
+        # plt.hold(True)
+        # plt.scatter(centers2D[:, 0], centers2D[:, 1],
+        #             marker='x', s=200, linewidths=3, c='r')
+        # plt.show()  # not required if using ipython notebook
 
 
 def clean(doc):
@@ -280,12 +331,11 @@ def visible(element):
 def history():
     # list of user history
     urls = list(set(request.get_json()['urls']))
-    #id = request.get_json()['ID']
-    id = 3
-    print(id)
+    # id = request.get_json()['ID']
+    read_wid_dic()
     print("Reading URLS")
     for url in urls:
-        #print(url)
+        # print(url)
         # req = Request(url, headers={'User-Agent': 'Mozilla/5.0'} )
         # mybytes = urlopen( req ).read()
         # mystr = mybytes.decode( "utf8" )
@@ -480,23 +530,7 @@ def history():
     print("suggested URLS")
     get_suggested_URLs()
 
-    documents.clear()
-    clusters.clear()
-
-    topic1.clear()
-    topic2.clear()
-    topic3.clear()
-    topic4.clear()
-
-    topic_words1.clear()
-    topic_words2.clear()
-    topic_words3.clear()
-    topic_words4.clear()
-
-    urls1.clear()
-    urls2.clear()
-    urls3.clear()
-    urls4.clear()
+    write_wid_dic()
 
     return all_urls_str
 
@@ -511,7 +545,7 @@ def save_data():
 
 @app.route('/id_exist', methods=["POST"])
 def id_exist():
-    #id = request.get_json()['ID']
+    # id = request.get_json()['ID']
     id = 3
     # print(id)
 
