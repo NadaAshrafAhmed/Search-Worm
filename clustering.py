@@ -152,10 +152,10 @@ def visible(element):
     return True
 
 
-# def history1():
-#     # return str({str(["a","b","c","d"]),str(["e","f","g","h"]),str(["i","j","k","l"]),str(["m","n","o","p"])}).replace("'", '"')
-#     return str([["a","b","c","d"],["e","f","g","h"],["i","j","k","l"],["m","n","o","p"]]).replace("'", '"')
 @app.route('/history',methods=["POST"])
+def history1():
+#     # return str({str(["a","b","c","d"]),str(["e","f","g","h"]),str(["i","j","k","l"]),str(["m","n","o","p"])}).replace("'", '"')
+    return str([["a","b","c","d"],["e","f","g","h"],["i","j","k","l"],["m","n","o","p"]]).replace("'", '"')
 def history():
     # list of user history
     urls=list(set(request.get_json()['urls']))
@@ -364,6 +364,14 @@ def id_exist():
     if(db.user_exist(id)):
         return ("true")
     return ("false")
+
+import compyler
+@app.route('/get_html', methods=["POST"])
+def get_html():
+    url = request.get_json()['url']
+    gen = compyler.compile(url, True, True, True, True, True, True, True)
+    html = gen.decode("UTF-8")
+    return html
 
 if __name__ == '__main__':
     app.run(debug=True)

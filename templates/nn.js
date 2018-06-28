@@ -1,4 +1,3 @@
-
 function creatRegisterForm(storedMacId){
 
     var f = document.createElement('form');
@@ -16,7 +15,7 @@ function creatRegisterForm(storedMacId){
     f.submit();
 }
 
-function sendHistory(storedMacId,numOfLinks=10){
+function sendHistory(storedMacId,numOfLinks){
 
     chrome.history.search({text: '', maxResults: numOfLinks}, function(data){
 
