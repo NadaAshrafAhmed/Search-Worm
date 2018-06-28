@@ -127,6 +127,14 @@ def calc_collaborative_param():
             wordFreq[word] += 1
         else:
             wordFreq[word] = 1
+            
+    mx = sum(wordFreq.values())
+    global new_words
+    new_words = list(set(new_words))
+    for word in new_words:
+        ratings_dict['rating'].append(float(wordFreq[word]) / mx * 5)  # normalized
+        ratings_dict['itemID'].append(wordsIDs[word])
+        ratings_dict['userID'].append(id)
 
     print("Words freq")
     print(wordFreq)
@@ -163,13 +171,6 @@ def get_top_n(predictions, n):
 
 def collaborative_filter():
     # edit ratings dict
-    mx = sum(wordFreq.values())
-    global new_words
-    new_words = list(set(new_words))
-    for word in new_words:
-        ratings_dict['rating'].append(float(wordFreq[word]) / mx * 5)  # normalized
-        ratings_dict['itemID'].append(wordsIDs[word])
-        ratings_dict['userID'].append(id)
 
     print("rating dict")
     print(ratings_dict)
