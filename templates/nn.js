@@ -62,7 +62,7 @@ function showResults(){
             {
 
                 i=results['res'][k-1];
-                var ind=[]
+                var ind=[];
                 for (var j=0;j<i.length;j++)
                 {
                     ind.push(j);
