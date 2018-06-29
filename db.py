@@ -3,7 +3,7 @@ import mysql.connector
 
 
 def add_user(id,name,age,nation):
-    db = mysql.connector.connect( user='nada', password='root', host='localhost', database='search-worm' )
+    db = mysql.connector.connect( user='root', password='root', host='localhost', database='search-worm' )
     cur = db.cursor()
     cur.execute( "INSERT INTO user VALUES ('"+id+"', '"+name+"', '"+str(age)+"', '"+nation+"');" )
     cur.execute( "SELECT * FROM user" )
@@ -13,15 +13,16 @@ def add_user(id,name,age,nation):
 
     cur.close()
     db.close()
+
 def user_exist(id):
-    db = mysql.connector.connect( user='nada', password='root', host='localhost', database='search-worm' )
+    db = mysql.connector.connect( user='root', password='root', host='localhost', database='search-worm' )
     cur = db.cursor()
     cur.execute( "SELECT name FROM user WHERE id='"+id+"';" )
     cur.fetchall()
     return (cur.rowcount>0)
 
 def add_word(user_id, words):
-    db = mysql.connector.connect( user='nada', password='root', host='localhost', database='search-worm' )
+    db = mysql.connector.connect( user='root', password='root', host='localhost', database='search-worm' )
     cur = db.cursor()
     # cur.execute( "INSERT INTO user VALUES ('" + id + "', '" + name + "', '" + str( age ) + "', '" + nation + "');" )
     cur.execute( "SELECT word, frq FROM userword WHERE user_id='"+user_id+"' ;" )
@@ -54,7 +55,7 @@ def add_word(user_id, words):
     db.close()
 
 def add_topic(w1, w2, w3):
-    db = mysql.connector.connect( user='nada', password='root', host='localhost', database='search-worm' )
+    db = mysql.connector.connect( user='root', password='root', host='localhost', database='search-worm' )
     cur = db.cursor()
     cur.execute( "SELECT max(id) as mx FROM topic ;" )
     id=0;

@@ -8,6 +8,8 @@ chrome.storage.local.get( null, function(item){
 
     chrome.storage.local.remove('database')
 
+    chrome.storage.local.remove('lastUpdate')
+
     console.log(item['database']);
     chrome.storage.local.remove('res')
 
