@@ -151,7 +151,7 @@ chrome.storage.local.get('machine-id', function(item){
                 var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
                 console.log(diffDays)
 
-                if( true ){// number of days after we shod run clustring algorithem //diffDays>=4
+                if( diffDays>=4 ){// number of days after we shod run clustring algorithem
 
                     sendHistory(storedMacId,10);
                     showResults();
