@@ -2,24 +2,30 @@
   "manifest_version": 2,
   "name": "SearchWorm",
   "version": "1.0",
-
-  "chrome_url_overrides" : {
+  "chrome_url_overrides": {
     "newtab": "form.html"
   },
-
- "icons": { "16": "icon.png",
-           "48": "icon.png",
-          "128": "icon.png" },
-
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
   "browser_action": {
-    "default_icon": {                    
-            "16": "icon.png",           
-            "24": "icon.png",           
-            "32": "icon.png"            
-          },
-    "default_title": "Search Worm",      // optional; shown in tooltip
-    "default_popup": "popup.html"        // optional
-   },
-
-  "permissions": ["history","http://127.0.0.1:5000/","storage","tabs"]
+    "default_icon": {
+      "16": "icon.png",
+      "24": "icon.png",
+      "32": "icon.png"
+    },
+    "default_title": "Search Worm",
+    // optional; shown in tooltip
+    "default_popup": "popup.html"
+    // optional
+  },
+  "permissions": [
+    "history",
+    "http://127.0.0.1:5000/",
+    "storage",
+    "tabs",
+    "unlimitedStorage"
+  ]
 }

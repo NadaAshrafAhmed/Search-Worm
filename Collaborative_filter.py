@@ -3,6 +3,7 @@ from collections import defaultdict
 import pandas as pd
 from surprise import Reader, Dataset, KNNBasic, accuracy
 from surprise.model_selection import KFold
+from db import *
 
 wordFreq = defaultdict(dict)  # must read all previous frequencies for user X
 
@@ -63,16 +64,14 @@ def read_wid_dic():
     file.close()
 
 
+
+
 # TODO: save wordsID, rating dict in collaborative table
 # TODO: save wordfreq in user table
 def calc_collaborative_param(new_words, id):
-    for word in new_words:
-        if word not in wordsIDs:
-            wordsIDs[word] = wordsIDs.__len__()
-        if word in wordFreq:
-            wordFreq[word] += 1
-        else:
-            wordFreq[word] = 1
+
+    wordsIDs = select_words()
+    wordFreq = select_user_words(id)
 
     mx = sum(wordFreq.values())
     new_words = list(set(new_words))
@@ -83,6 +82,7 @@ def calc_collaborative_param(new_words, id):
 
     print("ratings dic")
     print(ratings_dict)
+
 
 def get_top_n(predictions, n):
     '''Return the top-N recommendation for each user from a set of predictions.
@@ -159,6 +159,7 @@ def get_suggested_URLs(id):
         for word, wid in wordsIDs.items():
             if wid == iid:
                 new_words.append(word)
+    print("suggested URLs")
     print(new_words)
 
     return new_words

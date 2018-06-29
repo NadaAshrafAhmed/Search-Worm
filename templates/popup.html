@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=3">
-<style>
-.vertical-menu {
-    width: 180px;
-    height: 200px;
-    overflow-y: auto;
-}
+    <meta name="viewport" content="width=device-width, initial-scale=3">
 
-.vertical-menu a {
-    background-color: #eee;
-    color: black;
-    display: block;
-    padding: 12px;
-    text-decoration: none;
-}
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
 
-.vertical-menu a:hover {
-    background-color: #ccc;
-}
+        .sidenav {
+            width: 170px;
+            height: 60px;
+            overflow-y: auto;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
 
-.vertical-menu a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-</style>
-  <script src="n.js"></script>
+        .sidenav a  {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #a8a8a8;
+            display: block;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
 
+        .sidenav a:hover {
+            color: #ffffff;
+        }
+
+    </style>
 </head>
 <body>
 
-<h4>Search Worm</h4>
-
-<div class="vertical-menu">
-
-  <a href="#"id="download">Link 1</a>
-  <a href="#">Link 2</a>
-  <a href="#">Link 3</a>
-  <a href="#">Link 4</a>
-
+<div class="sidenav ">
+    <a id="download">Save Page</a>
 </div>
 
-
+<script src="offlineBrowser.js"></script>
 
 </body>
-
 </html>

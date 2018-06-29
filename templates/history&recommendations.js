@@ -1,4 +1,3 @@
-
 function creatRegisterForm(storedMacId){
 
     var f = document.createElement('form');
@@ -16,7 +15,7 @@ function creatRegisterForm(storedMacId){
     f.submit();
 }
 
-function sendHistory(storedMacId,numOfLinks=10){
+function sendHistory(storedMacId,numOfLinks){
 
     chrome.history.search({text: '', maxResults: numOfLinks}, function(data){
 
@@ -63,7 +62,7 @@ function showResults(){
             {
 
                 i=results['res'][k-1];
-                var ind=[]
+                var ind=[];
                 for (var j=0;j<i.length;j++)
                 {
                     ind.push(j);
@@ -144,7 +143,7 @@ chrome.storage.local.get('machine-id', function(item){
             chrome.storage.local.get('lastUpdate',function(x){
 
                 var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-                console.log(x['lastUpdate'])
+                //console.log(x['lastUpdate'])
                 var today = new Date();
                 var firstDate = new Date(today.getFullYear(),today.getMonth()+1,today.getDate());
                 var secondDate = new Date(x['lastUpdate']['year'],x['lastUpdate']['month'],x['lastUpdate']['day']);
