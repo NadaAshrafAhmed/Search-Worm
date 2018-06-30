@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c48cd08d-92ba-4a71-8940-bd7bf5345b2e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Collaborative_filter.py" afterPath="$PROJECT_DIR$/Collaborative_filter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Integrating.py" afterPath="$PROJECT_DIR$/Integrating.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.py" afterPath="$PROJECT_DIR$/db.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Integrating.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Integrating.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Integrating.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="241" column="20" lean-forward="true" selection-start-line="241" selection-start-column="20" selection-end-line="241" selection-end-column="20" />
+            <state relative-caret-position="242">
+              <caret line="248" column="17" lean-forward="true" selection-start-line="248" selection-start-column="17" selection-end-line="248" selection-end-column="17" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -34,27 +31,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
-              <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+            <state relative-caret-position="2898">
+              <caret line="161" column="64" lean-forward="false" selection-start-line="161" selection-start-column="64" selection-end-line="161" selection-end-column="64" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
-                <marker date="1530346907504" expanded="true" signature="246:338" ph="INSERT INTO user... " />
-                <marker date="1530346907504" expanded="true" signature="359:377" ph="SELECT * FRO... user" />
-                <marker date="1530346907504" expanded="true" signature="644:687" ph="SELECT name user" />
-                <marker date="1530346907504" expanded="true" signature="1135:1197" ph="SELECT word,... userword" />
-                <marker date="1530346907504" expanded="true" signature="1836:1904" ph="INSERT INTO userword... " />
-                <marker date="1530346907504" expanded="true" signature="1960:2086" ph="UPDATE userw... " />
-                <marker date="1530346907504" expanded="true" signature="2315:2346" ph="SELECT max(i... topic" />
-                <marker date="1530346907504" expanded="true" signature="2484:2570" ph="INSERT INTO topic... " />
-                <marker date="1530346907504" expanded="true" signature="2793:2830" ph="SELECT max(i... topic" />
-                <marker date="1530346907504" expanded="true" signature="3310:3372" ph="SELECT word,... userword" />
-                <marker date="1530346907504" expanded="true" signature="3711:3742" ph="SELECT word_... words" />
-                <marker date="1530346907504" expanded="true" signature="4124:4180" ph="INSERT INTO words" />
-                <marker date="1530346907504" expanded="true" signature="4590:4639" ph="SELECT user_... ratings_dict" />
-                <marker date="1530346907504" expanded="true" signature="5217:5328" ph="INSERT INTO ratings_dict... " />
+                <marker date="1530347040716" expanded="true" signature="242:334" ph="INSERT INTO user... " />
+                <marker date="1530347040716" expanded="true" signature="355:373" ph="SELECT * FRO... user" />
+                <marker date="1530347040716" expanded="true" signature="636:679" ph="SELECT name user" />
+                <marker date="1530347040716" expanded="true" signature="1123:1185" ph="SELECT word,... userword" />
+                <marker date="1530347040716" expanded="true" signature="1824:1892" ph="INSERT INTO userword... " />
+                <marker date="1530347040716" expanded="true" signature="1948:2074" ph="UPDATE userw... " />
+                <marker date="1530347040716" expanded="true" signature="2299:2330" ph="SELECT max(i... topic" />
+                <marker date="1530347040716" expanded="true" signature="2468:2554" ph="INSERT INTO topic... " />
+                <marker date="1530347040716" expanded="true" signature="2773:2810" ph="SELECT word1... topic" />
+                <marker date="1530347040716" expanded="true" signature="3286:3348" ph="SELECT word,... userword" />
+                <marker date="1530347040716" expanded="true" signature="3683:3714" ph="SELECT word_... words" />
+                <marker date="1530347040716" expanded="true" signature="4554:4603" ph="SELECT user_... ratings_dict" />
+                <marker date="1530347040716" expanded="true" signature="5177:5288" ph="INSERT INTO ratings_dict... " />
               </folding>
             </state>
           </provider>
@@ -63,7 +59,7 @@
       <file leaf-file-name="User.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../git-search-worm/User.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
+            <state relative-caret-position="251">
               <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="29" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -710,17 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../git-search-worm/User.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1530346065232" expanded="true" signature="389:500" ph="INSERT INTO ratings_dict... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -740,36 +725,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db.py">
+    <entry file="file://$PROJECT_DIR$/Integrating.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+        <state relative-caret-position="242">
+          <caret line="248" column="17" lean-forward="true" selection-start-line="248" selection-start-column="17" selection-end-line="248" selection-end-column="17" />
           <folding>
-            <element signature="e#0#22#0" expanded="true" />
-            <marker date="1530346907504" expanded="true" signature="246:338" ph="INSERT INTO user... " />
-            <marker date="1530346907504" expanded="true" signature="359:377" ph="SELECT * FRO... user" />
-            <marker date="1530346907504" expanded="true" signature="644:687" ph="SELECT name user" />
-            <marker date="1530346907504" expanded="true" signature="1135:1197" ph="SELECT word,... userword" />
-            <marker date="1530346907504" expanded="true" signature="1836:1904" ph="INSERT INTO userword... " />
-            <marker date="1530346907504" expanded="true" signature="1960:2086" ph="UPDATE userw... " />
-            <marker date="1530346907504" expanded="true" signature="2315:2346" ph="SELECT max(i... topic" />
-            <marker date="1530346907504" expanded="true" signature="2484:2570" ph="INSERT INTO topic... " />
-            <marker date="1530346907504" expanded="true" signature="2793:2830" ph="SELECT max(i... topic" />
-            <marker date="1530346907504" expanded="true" signature="3310:3372" ph="SELECT word,... userword" />
-            <marker date="1530346907504" expanded="true" signature="3711:3742" ph="SELECT word_... words" />
-            <marker date="1530346907504" expanded="true" signature="4124:4180" ph="INSERT INTO words" />
-            <marker date="1530346907504" expanded="true" signature="4590:4639" ph="SELECT user_... ratings_dict" />
-            <marker date="1530346907504" expanded="true" signature="5217:5328" ph="INSERT INTO ratings_dict... " />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Integrating.py">
+    <entry file="file://$PROJECT_DIR$/../git-search-worm/User.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="241" column="20" lean-forward="true" selection-start-line="241" selection-start-column="20" selection-end-line="241" selection-end-column="20" />
+        <state relative-caret-position="251">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="29" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1530346065232" expanded="true" signature="389:500" ph="INSERT INTO ratings_dict... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2898">
+          <caret line="161" column="64" lean-forward="false" selection-start-line="161" selection-start-column="64" selection-end-line="161" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+            <marker date="1530347040716" expanded="true" signature="242:334" ph="INSERT INTO user... " />
+            <marker date="1530347040716" expanded="true" signature="355:373" ph="SELECT * FRO... user" />
+            <marker date="1530347040716" expanded="true" signature="636:679" ph="SELECT name user" />
+            <marker date="1530347040716" expanded="true" signature="1123:1185" ph="SELECT word,... userword" />
+            <marker date="1530347040716" expanded="true" signature="1824:1892" ph="INSERT INTO userword... " />
+            <marker date="1530347040716" expanded="true" signature="1948:2074" ph="UPDATE userw... " />
+            <marker date="1530347040716" expanded="true" signature="2299:2330" ph="SELECT max(i... topic" />
+            <marker date="1530347040716" expanded="true" signature="2468:2554" ph="INSERT INTO topic... " />
+            <marker date="1530347040716" expanded="true" signature="2773:2810" ph="SELECT word1... topic" />
+            <marker date="1530347040716" expanded="true" signature="3286:3348" ph="SELECT word,... userword" />
+            <marker date="1530347040716" expanded="true" signature="3683:3714" ph="SELECT word_... words" />
+            <marker date="1530347040716" expanded="true" signature="4554:4603" ph="SELECT user_... ratings_dict" />
+            <marker date="1530347040716" expanded="true" signature="5177:5288" ph="INSERT INTO ratings_dict... " />
           </folding>
         </state>
       </provider>
