@@ -3,7 +3,7 @@ from collections import defaultdict
 
 
 def add_user(id, name, age, nation):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     cur.execute("INSERT INTO user VALUES ('" + id + "', '" + name + "', '" + str(age) + "', '" + nation + "');")
     cur.execute("SELECT * FROM user")
@@ -16,15 +16,21 @@ def add_user(id, name, age, nation):
 
 
 def user_exist(id):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     cur.execute("SELECT name FROM user WHERE id='" + id + "';")
     cur.fetchall()
     return (cur.rowcount > 0)
 
 
+def manage_collab_param(user_id, words):
+    add_word(user_id, words)
+    insert_words(words)
+    insert_ratings_dic(list(set(words)), select_user_words(user_id), select_words())
+
+
 def add_word(user_id, words):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     # cur.execute( "INSERT INTO user VALUES ('" + id + "', '" + name + "', '" + str( age ) + "', '" + nation + "');" )
     cur.execute("SELECT word, frq FROM userword WHERE user_id='" + user_id + "' ;")
@@ -51,15 +57,13 @@ def add_word(user_id, words):
         cur.execute("UPDATE userword SET frq='" + str(
             user_words[word]) + "' WHERE user_id= '" + user_id + "' and word= '" + word + "';")
 
-    insert_words(words)
     db.commit()
-
     cur.close()
     db.close()
 
 
 def add_topic(w1, w2, w3):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     cur.execute("SELECT max(id) as mx FROM topic ;")
     id = 0;
@@ -76,21 +80,8 @@ def add_topic(w1, w2, w3):
     db.close()
 
 
-# def add_user_word(id, wordFreq):
-#     db = mysql.connector.connect( user='root', password='root', host='localhost', database='search-worm' )
-#     cur = db.cursor()
-#     stmt = ("INSERT OR UPDATE INTO userword (id, word, frq) VALUES (%s, %s, %s)")
-#     for word, freq in wordFreq:
-#         data = (id, word, freq)
-#         cur.execute(stmt, data)
-#     db.commit()
-#
-#     cur.close()
-#     db.close()
-
-
 def select_user_words(user_id):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     # cur.execute( "INSERT INTO user VALUES ('" + id + "', '" + name + "', '" + str( age ) + "', '" + nation + "');" )
     cur.execute("SELECT word, frq FROM userword WHERE user_id='" + user_id + "' ;")
@@ -103,13 +94,14 @@ def select_user_words(user_id):
 
 
 def select_words():
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
 
     cur.execute("SELECT word_id, word FROM words;")
     wordsID = defaultdict(dict)
     for word_id, word in cur.fetchall():
         wordsID[word] = int(word_id)
+
 
     db.commit()
     cur.close()
@@ -119,16 +111,63 @@ def select_words():
 
 
 def insert_words(words):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     wordsIDs = select_words()
-    stmt = ("INSERT  INTO words (word_id, word) VALUES (%s, %s)")
+    stmt = "INSERT IGNORE INTO words (word_id, word) VALUES (%s, %s);"
 
+    print("insert words wordsID")
     for word in words:
         if word not in wordsIDs:
             wordsIDs[word] = wordsIDs.__len__()
-            data = (str(words[word]), word)
+            data = (wordsIDs[word], word)
+            print(word)
             cur.execute(stmt, data)
+            print(word)
+
+
+    db.commit()
+    cur.close()
+    db.close()
+
+
+def select_ratings_dic():
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
+    cur = db.cursor()
+    cur.execute("SELECT user_id, item_id, rating FROM ratings_dict;")
+    ratings_dict = {'itemID': list(),
+                    'userID': list(),
+                    'rating': list()}
+    for user_id, item_id, rating in cur.fetchall():
+        ratings_dict['rating'].append(float(rating))
+        ratings_dict['itemID'].append(int(item_id))
+        ratings_dict['userID'].append(user_id)
+
+    db.commit()
+    cur.close()
+    db.close()
+
+    return ratings_dict
+
+
+def insert_ratings_dic(new_words, wordFreq, wordsIDs):
+    ratings_dict = select_ratings_dic()
+    mx = sum(wordFreq.values())
+    for word in new_words:
+        ratings_dict['rating'].append(float(wordFreq[word]) / mx * 5)  # normalized
+        ratings_dict['itemID'].append(wordsIDs[word])
+        ratings_dict['userID'].append(id)
+
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
+    cur = db.cursor()
+    stmt = "INSERT INTO ratings_dict (user_id, item_id, rating) VALUES ( '%s', %s , '%s') ON DUPLICATE KEY UPDATE rating = '%s';"
+
+    for i in range(0, ratings_dict['userID'].__len__()):
+        user_id = ratings_dict['userID'][i]
+        item_id = ratings_dict['itemID'][i]
+        ui_rating = ratings_dict['rating'][i]
+        data = (user_id, item_id, ui_rating, ui_rating)
+        cur.execute(stmt, data)
 
     db.commit()
     cur.close()

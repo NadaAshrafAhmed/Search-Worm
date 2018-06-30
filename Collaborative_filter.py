@@ -5,6 +5,10 @@ from surprise import Reader, Dataset, KNNBasic, accuracy
 from surprise.model_selection import KFold
 from db import *
 
+import json
+
+
+
 wordFreq = defaultdict(dict)  # must read all previous frequencies for user X
 
 # global for all users
@@ -64,21 +68,11 @@ def read_wid_dic():
     file.close()
 
 
-
-
 # TODO: save wordsID, rating dict in collaborative table
 # TODO: save wordfreq in user table
 def calc_collaborative_param(new_words, id):
 
-    wordsIDs = select_words()
-    wordFreq = select_user_words(id)
-
-    mx = sum(wordFreq.values())
-    new_words = list(set(new_words))
-    for word in new_words:
-        ratings_dict['rating'].append(float(wordFreq[word]) / mx * 5)  # normalized
-        ratings_dict['itemID'].append(wordsIDs[word])
-        ratings_dict['userID'].append(id)
+    ratings_dict = select_ratings_dic()
 
     print("ratings dic")
     print(ratings_dict)
@@ -100,7 +94,6 @@ def get_top_n(predictions, n):
 
     print("get top n")
 
-
     # First map the predictions to each user.
     for uid, iid, true_r, est, _ in predictions:
         top_n[uid].append((iid, est))
@@ -113,9 +106,9 @@ def get_top_n(predictions, n):
     return top_n
 
 
-# TODO: save top n in collaborative table
 def collaborative_filter():
-    # edit ratings dict
+
+    ratings_dict = select_ratings_dic()
 
     print("rating dict")
     print(ratings_dict)
@@ -144,6 +137,10 @@ def collaborative_filter():
 
     global top_n
     top_n = get_top_n(predictions, n=3)
+
+    with open('top_n.json', 'w') as fp:
+        json.dump(top_n, fp, indent=4)
+
     return top_n
 
 
@@ -153,6 +150,8 @@ def get_suggested_URLs(id):
     # for all users get item id
     # for uid, user_ratings in top_n.items():
     #     print(uid, [iid for (iid, _) in user_ratings])
+    with open('top_n.json', 'r') as fp:
+        top_n = json.load(fp)
 
     new_items = top_n[id]
     for iid, _ in new_items:

@@ -192,7 +192,7 @@ def get_recommendations(urls, id):
                 except Exception as e:
                     print(e)
 
-    db.add_word(id, topic_words1[0] + topic_words1[1] + topic_words1[2]
+    db.manage_collab_param(id, topic_words1[0] + topic_words1[1] + topic_words1[2]
                 + topic_words2[0] + topic_words2[1] + topic_words2[2]
                 + topic_words3[0] + topic_words3[1] + topic_words3[2]
                 + topic_words4[0] + topic_words4[1] + topic_words4[2])
@@ -226,7 +226,6 @@ def get_recommendations(urls, id):
     for i in urls4:
         print(i)
 
-    calc_collaborative_param(new_words, id)
     # TODO: start filter whenever new user comes in
     collaborative_filter()
     get_suggested_URLs(id)

@@ -2,36 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c48cd08d-92ba-4a71-8940-bd7bf5345b2e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/nature.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/img/nature.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/img/refresh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Clustering.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Integrating.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RecommendationSystem.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TopicModelling.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/compyler.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/offlineBrowser.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/LDA-results.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/clustering.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/f.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/file.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/n.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/recommendations.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/wid-dic.txt" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/m.js" afterPath="$PROJECT_DIR$/templates/getID.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/nn.js" afterPath="$PROJECT_DIR$/templates/history&amp;recommendations.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.google-cookie" afterPath="$PROJECT_DIR$/.google-cookie" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Collaborative_filter.py" afterPath="$PROJECT_DIR$/Collaborative_filter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/css/style.css" afterPath="$PROJECT_DIR$/templates/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/delete_macid.js" afterPath="$PROJECT_DIR$/templates/delete_macid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/enter_data.html" afterPath="$PROJECT_DIR$/templates/enter_data.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/form.html" afterPath="$PROJECT_DIR$/templates/form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/manifest.json" afterPath="$PROJECT_DIR$/templates/manifest.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/popup.html" afterPath="$PROJECT_DIR$/templates/popup.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Integrating.py" afterPath="$PROJECT_DIR$/Integrating.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compyler.py" afterPath="$PROJECT_DIR$/compyler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.py" afterPath="$PROJECT_DIR$/db.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,27 +16,18 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/git_search_worm_v2$RecommendationSystem.coverage" NAME="RecommendationSystem Coverage Results" MODIFIED="1530332126177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/git_search_worm_v2$clustering__1_.coverage" NAME="clustering (1) Coverage Results" MODIFIED="1530224426938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/search_worm" />
     <SUITE FILE_PATH="coverage/git_search_worm_v2$clustering.coverage" NAME="clustering Coverage Results" MODIFIED="1530226095206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/git_search_worm_v2$User.coverage" NAME="User Coverage Results" MODIFIED="1530217465707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../git-search-worm" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TopicModelling.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TopicModelling.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Integrating.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Integrating.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3472">
-              <caret line="194" column="15" lean-forward="false" selection-start-line="194" selection-start-column="4" selection-end-line="194" selection-end-column="15" />
+            <state relative-caret-position="0">
+              <caret line="197" column="17" lean-forward="false" selection-start-line="197" selection-start-column="17" selection-end-line="197" selection-end-column="17" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -72,14 +38,12 @@
       <file leaf-file-name="Collaborative_filter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Collaborative_filter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="70" column="32" lean-forward="false" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
+            <state relative-caret-position="1620">
+              <caret line="121" column="23" lean-forward="false" selection-start-line="121" selection-start-column="23" selection-end-line="121" selection-end-column="23" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <element signature="e#1105#1875#0" expanded="false" />
-                <element signature="e#2450#3320#0" expanded="false" />
-                <element signature="e#2450#2921#1" expanded="false" />
-                <element signature="e#3397#4333#0" expanded="false" />
+                <element signature="e#1120#1890#0" expanded="false" />
+                <element signature="e#2159#2630#1" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -88,23 +52,64 @@
       <file leaf-file-name="db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1262">
-              <caret line="53" column="14" lean-forward="true" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+            <state relative-caret-position="161">
+              <caret line="162" column="13" lean-forward="true" selection-start-line="162" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
-                <marker date="1530298641824" expanded="true" signature="242:334" ph="INSERT INTO user... " />
-                <marker date="1530298641824" expanded="true" signature="355:373" ph="SELECT * FRO... user" />
-                <marker date="1530298641824" expanded="true" signature="636:679" ph="SELECT name user" />
-                <marker date="1530298641824" expanded="true" signature="1027:1089" ph="SELECT word,... userword" />
-                <marker date="1530298641824" expanded="true" signature="1728:1796" ph="INSERT INTO userword... " />
-                <marker date="1530298641824" expanded="true" signature="1852:1978" ph="UPDATE userw... " />
-                <marker date="1530298641824" expanded="true" signature="2228:2259" ph="SELECT max(i... topic" />
-                <marker date="1530298641824" expanded="true" signature="2397:2483" ph="INSERT INTO topic... " />
-                <marker date="1530298641824" expanded="true" signature="2720:2786" ph="INSERT INTO userword... " />
-                <marker date="1530298641824" expanded="true" signature="3243:3305" ph="SELECT word,... userword" />
-                <marker date="1530298641824" expanded="true" signature="3640:3671" ph="SELECT word_... words" />
-                <marker date="1530298641824" expanded="true" signature="4050:4100" ph="INSERT INTO words" />
+                <marker date="1530333126621" expanded="true" signature="246:338" ph="INSERT INTO user... " />
+                <marker date="1530333126621" expanded="true" signature="359:377" ph="SELECT * FRO... user" />
+                <marker date="1530333126621" expanded="true" signature="644:687" ph="SELECT name user" />
+                <marker date="1530333126621" expanded="true" signature="1220:1282" ph="SELECT word,... userword" />
+                <marker date="1530333126621" expanded="true" signature="1921:1989" ph="INSERT INTO userword... " />
+                <marker date="1530333126621" expanded="true" signature="2045:2171" ph="UPDATE userw... " />
+                <marker date="1530333126621" expanded="true" signature="2400:2431" ph="SELECT max(i... topic" />
+                <marker date="1530333126621" expanded="true" signature="2569:2655" ph="INSERT INTO topic... " />
+                <marker date="1530333126621" expanded="true" signature="3008:3070" ph="SELECT word,... userword" />
+                <marker date="1530333126621" expanded="true" signature="3409:3440" ph="SELECT word_... words" />
+                <marker date="1530333126621" expanded="true" signature="3823:3879" ph="INSERT INTO words" />
+                <marker date="1530333126621" expanded="true" signature="4372:4421" ph="SELECT user_... ratings_dict" />
+                <marker date="1530333126621" expanded="true" signature="5296:5411" ph="INSERT INTO ratings_dict... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../git-search-worm/User.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RecommendationSystem.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RecommendationSystem.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/form.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="8" column="43" lean-forward="false" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="compyler.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compyler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -126,7 +131,12 @@
       <find>id</find>
       <find>calc</find>
       <find>add</find>
+      <find>password='root'</find>
+      <find>words</find>
     </findStrings>
+    <replaceStrings>
+      <replace>password='zombie96'</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -143,12 +153,13 @@
         <option value="$PROJECT_DIR$/search_worm/Collaborative_filter.py" />
         <option value="$PROJECT_DIR$/search_worm/clustering.py" />
         <option value="$PROJECT_DIR$/wid-dic.txt" />
-        <option value="$PROJECT_DIR$/templates/form.html" />
         <option value="$PROJECT_DIR$/templates/delete_macid.js" />
         <option value="$PROJECT_DIR$/clustering.py" />
-        <option value="$PROJECT_DIR$/Integrating.py" />
-        <option value="$PROJECT_DIR$/db.py" />
         <option value="$PROJECT_DIR$/Collaborative_filter.py" />
+        <option value="$PROJECT_DIR$/Integrating.py" />
+        <option value="$PROJECT_DIR$/compyler.py" />
+        <option value="$PROJECT_DIR$/db.py" />
+        <option value="$PROJECT_DIR$/templates/form.html" />
       </list>
     </option>
   </component>
@@ -198,6 +209,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -205,18 +218,31 @@
               <item name="git-search-worm-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="git-search-worm-v2" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="git-search-worm-v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="git-search-worm-v2" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="git-search-worm-v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="git-search-worm-v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6.5 (~/miniconda3/bin/python) &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/Musicly" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../git-search-worm/User.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="settings&#9;ACTION&#9;Database.Settings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -236,7 +262,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.clustering">
+  <component name="RunManager" selected="Python.RecommendationSystem">
+    <configuration name="RecommendationSystem" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="search worm" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RecommendationSystem.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <configuration name="User" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -291,16 +335,18 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Python.User" />
       <item index="1" class="java.lang.String" itemvalue="Python.clustering" />
       <item index="2" class="java.lang.String" itemvalue="Python.clustering (1)" />
+      <item index="3" class="java.lang.String" itemvalue="Python.RecommendationSystem" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.clustering" />
-        <item index="1" class="java.lang.String" itemvalue="Python.clustering (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.User" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.RecommendationSystem" />
+        <item index="1" class="java.lang.String" itemvalue="Python.clustering" />
+        <item index="2" class="java.lang.String" itemvalue="Python.clustering (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Python.User" />
       </list>
     </recent_temporary>
   </component>
@@ -324,15 +370,16 @@
     <frame x="59" y="24" width="1303" height="780" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27888447" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28844622" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -353,25 +400,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
       <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/delete_macid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../git-search-worm/clustering.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3744">
-          <caret line="208" column="17" lean-forward="false" selection-start-line="208" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../git-search-worm/User.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -383,9 +423,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#59#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -408,9 +445,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#59#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -432,9 +466,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#59#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -456,9 +487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#59#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -480,9 +508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#59#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -504,9 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#59#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -528,9 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#59#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -552,9 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="792">
           <caret line="70" column="18" lean-forward="false" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#59#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -576,9 +592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#59#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -612,13 +625,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LDA-results.txt" />
-    <entry file="file://$PROJECT_DIR$/../git-search-worm/User.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/PycharmProjects/Musicly/Musicly/Band.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -655,21 +661,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/delete_macid.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -681,40 +672,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#59#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compyler.py">
+    <entry file="file://$PROJECT_DIR$/templates/history&amp;recommendations.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="311" column="14" lean-forward="false" selection-start-line="311" selection-start-column="11" selection-end-line="311" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RecommendationSystem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TopicModelling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="378">
+          <caret line="21" column="32" lean-forward="false" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compyler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Integrating.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3472">
-          <caret line="194" column="15" lean-forward="false" selection-start-line="194" selection-start-column="4" selection-end-line="194" selection-end-column="15" />
+        <state relative-caret-position="0">
+          <caret line="197" column="17" lean-forward="false" selection-start-line="197" selection-start-column="17" selection-end-line="197" selection-end-column="17" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -723,36 +709,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Collaborative_filter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="70" column="32" lean-forward="false" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
+        <state relative-caret-position="1620">
+          <caret line="121" column="23" lean-forward="false" selection-start-line="121" selection-start-column="23" selection-end-line="121" selection-end-column="23" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#1105#1875#0" expanded="false" />
-            <element signature="e#2450#3320#0" expanded="false" />
-            <element signature="e#2450#2921#1" expanded="false" />
-            <element signature="e#3397#4333#0" expanded="false" />
+            <element signature="e#1120#1890#0" expanded="false" />
+            <element signature="e#2159#2630#1" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RecommendationSystem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/lib/python3.6/site-packages/mysql/connector/connection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="639" column="0" lean-forward="false" selection-start-line="639" selection-start-column="0" selection-end-line="639" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../git-search-worm/User.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="8" column="43" lean-forward="false" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1262">
-          <caret line="53" column="14" lean-forward="true" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+        <state relative-caret-position="161">
+          <caret line="162" column="13" lean-forward="true" selection-start-line="162" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
-            <marker date="1530298641824" expanded="true" signature="242:334" ph="INSERT INTO user... " />
-            <marker date="1530298641824" expanded="true" signature="355:373" ph="SELECT * FRO... user" />
-            <marker date="1530298641824" expanded="true" signature="636:679" ph="SELECT name user" />
-            <marker date="1530298641824" expanded="true" signature="1027:1089" ph="SELECT word,... userword" />
-            <marker date="1530298641824" expanded="true" signature="1728:1796" ph="INSERT INTO userword... " />
-            <marker date="1530298641824" expanded="true" signature="1852:1978" ph="UPDATE userw... " />
-            <marker date="1530298641824" expanded="true" signature="2228:2259" ph="SELECT max(i... topic" />
-            <marker date="1530298641824" expanded="true" signature="2397:2483" ph="INSERT INTO topic... " />
-            <marker date="1530298641824" expanded="true" signature="2720:2786" ph="INSERT INTO userword... " />
-            <marker date="1530298641824" expanded="true" signature="3243:3305" ph="SELECT word,... userword" />
-            <marker date="1530298641824" expanded="true" signature="3640:3671" ph="SELECT word_... words" />
-            <marker date="1530298641824" expanded="true" signature="4050:4100" ph="INSERT INTO words" />
+            <marker date="1530333126621" expanded="true" signature="246:338" ph="INSERT INTO user... " />
+            <marker date="1530333126621" expanded="true" signature="359:377" ph="SELECT * FRO... user" />
+            <marker date="1530333126621" expanded="true" signature="644:687" ph="SELECT name user" />
+            <marker date="1530333126621" expanded="true" signature="1220:1282" ph="SELECT word,... userword" />
+            <marker date="1530333126621" expanded="true" signature="1921:1989" ph="INSERT INTO userword... " />
+            <marker date="1530333126621" expanded="true" signature="2045:2171" ph="UPDATE userw... " />
+            <marker date="1530333126621" expanded="true" signature="2400:2431" ph="SELECT max(i... topic" />
+            <marker date="1530333126621" expanded="true" signature="2569:2655" ph="INSERT INTO topic... " />
+            <marker date="1530333126621" expanded="true" signature="3008:3070" ph="SELECT word,... userword" />
+            <marker date="1530333126621" expanded="true" signature="3409:3440" ph="SELECT word_... words" />
+            <marker date="1530333126621" expanded="true" signature="3823:3879" ph="INSERT INTO words" />
+            <marker date="1530333126621" expanded="true" signature="4372:4421" ph="SELECT user_... ratings_dict" />
+            <marker date="1530333126621" expanded="true" signature="5296:5411" ph="INSERT INTO ratings_dict... " />
           </folding>
         </state>
       </provider>
