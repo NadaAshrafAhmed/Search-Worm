@@ -7,14 +7,14 @@
 
     <title>Getting Started</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body style="background-image: url('img/nature.jpeg');">
 <section id="contact">
     <div class="container">
         <h2 class="card-header header">Getting Started</h2>
-        <form action="http://127.0.0.1:5000/save_data" method="post" class="form-control">
+        <form action="http://127.0.0.1:5000/save_data" method="post" id="form" class="form-control transparent-light">
             <div class="form-group">
                 <input type="text" id="name" name="name" class="form-control" placeholder="Name" required="">
             </div>
@@ -23,6 +23,34 @@
             </div>
             <div class="form-group">
                 <input type="text" id="nation" name="nation" class="form-control" placeholder="Nationality" required="">
+            </div>
+            <div class="form-group">
+                <input type="text" id="place" name="nation" class="form-control" placeholder="Current Living"
+                       required="">
+            </div>
+            <div class="form-group">
+                <label style="width: 8%"><b> Gender:</b></label>
+                <label style="width: 8%"><input type="radio" name="gender" required> Male</label>
+                <label style="width: 8%"><input type="radio" name="gender"> Female</label>
+                <label style="width: 8%"><input type="radio" name="gender"> Other</label>
+            </div>
+            <div class="form-group " style="width: 100%">
+                <label><b> Interests:</b></label>
+                <br>
+                <div class="list-group-horizontal" id="topic-list">
+                    <input type="button"  style="width: 19%;margin: 1px" id = "topic1" class=" border rounded list-group-item list-group-item-action dummy" value="Topic 1">
+                    <input type="button"  style="width: 19%;margin: 1px" id = "topic2" class=" border rounded list-group-item list-group-item-action dummy" value="Topic 2">
+                    <input type="button"  style="width: 19%;margin: 1px" id = "topic3" class=" border rounded list-group-item list-group-item-action dummy" value="Topic 3">
+                    <input type="button"  style="width: 19%;margin: 1px" id = "topic4" class=" border rounded list-group-item list-group-item-action dummy" value="Topic 4">
+                    <input type="button"  style="width: 19%;margin: 1px" id = "topic5" class=" border rounded list-group-item list-group-item-action dummy" value="Topic 5">
+                    <input type="button"  style="width: 19%;margin: 1px" id = "topic6" class=" border rounded list-group-item list-group-item-action dummy" value="Topic 6">
+                    <input type="button"  style="width: 19%;margin: 1px" id = "topic7" class=" border rounded list-group-item list-group-item-action dummy" value="Topic 7">
+                    <input type="button"  style="width: 19%;margin: 1px" id = "topic8" class=" border rounded list-group-item list-group-item-action dummy" value="Topic 8">
+                    <input type="button"  style="width: 19%;margin: 1px" id = "topic9" class=" border rounded list-group-item list-group-item-action dummy" value="Topic 9">
+                    <input type="button"  style="width: 19%;margin: 1px" id = "topic10" class=" border rounded list-group-item list-group-item-action dummy" value="Topic 10">
+                </div>
+            </div>
+            <div class="form-group">
                 <label><br><b>Permissions:</b></label>
                 <ul>
                     <li>
@@ -36,17 +64,16 @@
                     </li>
                 </ul>
             </div>
-            <input type="checkbox" name="q" id="a-0" required autofocus>
-            <label>
+            <label><input type="checkbox" name="q" id="a-0" required autofocus>
                 I accept Terms and Conditions
             </label>
             <br>
             <input type='text' id="id" name="id" hidden>
+            <p class="alert alert-danger" id="error" style="display: none;"> Error!</p>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </section>
-<script src="getID.js">
-</script>
+<script src="enter_data.js"></script>
 </body>
 </html>
