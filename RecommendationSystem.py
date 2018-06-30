@@ -1,3 +1,4 @@
+from builtins import print
 
 from flask import Flask, render_template, request, json
 
@@ -66,7 +67,6 @@ def get_html():
     url = request.get_json()['url']
     gen = compyler.compile(url, True, True, True, True, True, True, True)
     html = gen.decode("UTF-8")
-
     return html
 
 if __name__ == '__main__':

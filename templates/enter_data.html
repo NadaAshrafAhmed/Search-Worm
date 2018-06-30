@@ -14,7 +14,7 @@
 <section id="contact">
     <div class="container">
         <h2 class="card-header header">Getting Started</h2>
-        <form action="http://127.0.0.1:5000/save_data" method="post" class="form-control">
+        <form action="http://127.0.0.1:5000/save_data" id="form" method="post" class="form-control">
             <div class="form-group">
                 <input type="text" id="name" name="name" class="form-control" placeholder="Name" required="">
             </div>
@@ -42,7 +42,7 @@
             </label>
             <br>
             <input type='text' id="id" name="id" hidden>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </section>

@@ -15,83 +15,79 @@ function creatRegisterForm(storedMacId){
     f.submit();
 }
 
-function sendHistory(storedMacId,numOfLinks){
-
-    chrome.history.search({text: '', maxResults: numOfLinks}, function(data){
-
-        var urls=[]
-
-        data.forEach(function(page) {
-            console.log(page.url);
-            urls.push(String(page.url))
-        });
-
-        var xmlhttp = new XMLHttpRequest();
-
-
-        xmlhttp.open("POST", "http://127.0.0.1:5000/history");
-        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xmlhttp.send(JSON.stringify({ID:storedMacId, urls: urls}));
-//        var today = new Date();
-//        chrome.storage.local.set({'lastUpdate':{'day':today.getDate(),'month':today.getMonth()+1,"year":today.getFullYear()}});
-
-        xmlhttp.onreadystatechange=function(){
-
-            if (xmlhttp.readyState==4 && xmlhttp.status==200)
-            {
-               var res = JSON.parse(xmlhttp.responseText);
-               console.log(res) ;
-
-               //writing on file
-               chrome.storage.local.set({'res':res});
-               var today = new Date();
-               chrome.storage.local.set({'lastUpdate':{'day':today.getDate(),'month':today.getMonth()+1,"year":today.getFullYear()}});
-            }
-        }
-
-
-    });
-}
-
-function showResults(){
-
-    chrome.storage.local.get('res',function(results){
-        if(results['res']){
-
-            for (var k=1;k<=results['res'].length;k++)
-            {
-
-                i=results['res'][k-1];
-                var ind=[];
-                for (var j=0;j<i.length;j++)
-                {
-                    ind.push(j);
-                }
-                var ul = document.getElementById("res"+k);
-                for(var j=0;j<Math.min(5,i.length);j++)
-                {
-                    var chosen=Math.floor(Math.random() * ind.length)
-
-                    var li = document.createElement("li");
-                    var a = document.createElement("a");
-                    a.appendChild(document.createTextNode(i[ind[chosen]]));
-                    a.setAttribute("href", i[ind[chosen]]);
-                    a.setAttribute("class", "card-link");
-
-                    li.appendChild(a);
-                    ul.appendChild(li);
-                    ind.splice(chosen,1);
-                }
-            }
-            document.getElementById("content").style.visibility="visible";
-        }
-        else{
-
-        //show defult res
-        }
-    });
-}
-
+//function sendHistory(storedMacId,numOfLinks){
+//
+//    chrome.history.search({text: '', maxResults: numOfLinks}, function(data){
+//
+//        var urls=[]
+//
+//        data.forEach(function(page) {
+//            console.log(page.url);
+//            urls.push(String(page.url))
+//        });
+//
+//        var xmlhttp = new XMLHttpRequest();
+//
+//
+//        xmlhttp.open("POST", "http://127.0.0.1:5000/history");
+//        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+//        xmlhttp.send(JSON.stringify({ID:storedMacId, urls: urls}));
+////        var today = new Date();
+////        chrome.storage.local.set({'lastUpdate':{'day':today.getDate(),'month':today.getMonth()+1,"year":today.getFullYear()}});
+//
+//        xmlhttp.onreadystatechange=function(){
+//
+//            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+//            {
+//               var res = JSON.parse(xmlhttp.responseText);
+//               console.log(res) ;
+//
+//               //writing on file
+//               chrome.storage.local.set({'res':res});
+//               var today = new Date();
+//               chrome.storage.local.set({'lastUpdate':{'day':today.getDate(),'month':today.getMonth()+1,"year":today.getFullYear()}});
+//            }
+//        }
+//
+//
+//    });
+//}
+//function showResults(){
+//    chrome.storage.local.get('res',function(results){
+//        if(results['res']){
+//
+//            for (var k=1;k<=results['res'].length;k++) // loop 3al 4 arrays bto3 al result urls
+//            {
+//                i=results['res'][k-1]; // i=topic[i] list of urls
+//                var ind=[];
+//                for (var j=0;j<i.length;j++)// ind=[0,1,2,3,...,len(topic[i])]
+//                {
+//                    ind.push(j);
+//                }
+//                var ul = document.getElementById("res"+k); // get card for topic[i] in html
+//                for(var j=0;j<Math.min(5,i.length);j++)
+//                {
+//                    var chosen=Math.floor(Math.random() * ind.length) // choose random index
+//
+//                    var li = document.createElement("li");
+//                    var a = document.createElement("a");
+//                    a.appendChild(document.createTextNode(i[ind[chosen]])); // put the url of chosen random index in the card
+//                    a.setAttribute("href", i[ind[chosen]]);
+//                    a.setAttribute("class", "card-link");
+//
+//                    li.appendChild(a);
+//                    ul.appendChild(li);
+//                    ind.splice(chosen,1);// remove chosen url index
+//                }
+//            }
+//            document.getElementById("content").style.visibility="visible";
+//        }
+//        else{
+//
+//        //show defult res
+//        }
+//    });
+//}
 
 chrome.storage.local.get('machine-id', function(item){
 
@@ -111,6 +107,7 @@ chrome.storage.local.get('machine-id', function(item){
    chrome.storage.local.get('database', function(item1){
 
         var check = item1['database'] ;
+
         console.log(check);
         if( check==false ){
 
