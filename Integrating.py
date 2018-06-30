@@ -44,6 +44,7 @@ urls1 = []
 urls2 = []
 urls3 = []
 urls4 = []
+urls5 = []
 
 all_urls = []
 
@@ -226,14 +227,29 @@ def get_recommendations(urls, id):
     for i in urls4:
         print(i)
 
-    # TODO: start filter whenever new user comes in
+    calc_collaborative_param(new_words, id)
     collaborative_filter()
-    get_suggested_URLs(id)
+    suggested_topics = get_suggested_topics(id)
+    for topic in suggested_topics:
+        try:
+            res = search(' '.join(topic), stop=3)
+            k = 0
+            for r in res:
+                if k < 3:
+                    urls5.append(r)
+                    k += 1
+        except Exception as e:
+            print(e)
+
+    print("URLs 5 finallyy~~~")
+    print(urls5)
 
     all_urls.append(url1)
     all_urls.append(url2)
     all_urls.append(url3)
     all_urls.append(url4)
+    all_urls.append(urls5) #TODO: add urls5 to card 5
+
 
     all_urls_str = str(all_urls)
 

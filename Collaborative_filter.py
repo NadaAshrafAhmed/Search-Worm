@@ -12,60 +12,9 @@ import json
 wordFreq = defaultdict(dict)  # must read all previous frequencies for user X
 
 # global for all users
-wordsIDs = defaultdict(dict)
 ratings_dict = {'itemID': list(),
                 'userID': list(),
                 'rating': list()}
-top_n = defaultdict(list)
-
-
-def write_wid_dic():
-    file = open('wid-dic.txt', 'a+')
-    file.write(str(wordsIDs.__len__()))
-    file.write('\n')
-    for word, id in wordsIDs.items():
-        file.write(word)
-        file.write(' ')
-        file.write(str(id))
-        file.write('\n')
-
-    file.write('\n')
-    for item in ratings_dict['itemID']:
-        file.write(str(item))
-        file.write(' ')
-    file.write('\n')
-    for user in ratings_dict['userID']:
-        file.write(str(user))
-        file.write(' ')
-    file.write('\n')
-    for rate in ratings_dict['rating']:
-        file.write(str(rate))
-        file.write(' ')
-    file.write('\n')
-    file.close()
-
-
-def read_wid_dic():
-    file = open('wid-dic.txt', 'r')
-    len = int(file.readline())
-    for i in range(0, len):
-        w_id = file.readline().split()
-        wordsIDs[w_id[0]] = int(w_id[1])
-
-    ratings_dict['itemID'] = file.readline().strip('\n').split(' ')
-    ratings_dict['userID'] = file.readline().strip('\n').split(' ')
-    ratings_dict['rating'] = file.readline().strip('\n').split(' ')
-
-    for i in range(0, ratings_dict['itemID'].__len__()):
-        ratings_dict['itemID'][i] = int(ratings_dict['itemID'][i])
-
-    for i in range(0, ratings_dict['userID'].__len__()):
-        ratings_dict['userID'][i] = int(ratings_dict['userID'][i])
-
-    for i in range(0, ratings_dict['rating'].__len__()):
-        ratings_dict['rating'][i] = float(ratings_dict['rating'][i])
-
-    file.close()
 
 
 # TODO: save wordsID, rating dict in collaborative table
@@ -73,9 +22,16 @@ def read_wid_dic():
 def calc_collaborative_param(new_words, id):
 
     ratings_dict = select_ratings_dic()
+    wordFreq = select_user_words(id)
+    wordsIDs = select_words()
 
-    print("ratings dic")
-    print(ratings_dict)
+    mx = sum(wordFreq.values())
+    for word in new_words:
+        ratings_dict['rating'].append(float(wordFreq[word]) / mx * 5)  # normalized
+        ratings_dict['itemID'].append(wordsIDs[word])
+        ratings_dict['userID'].append(id)
+
+    insert_ratings_dic(ratings_dict)
 
 
 def get_top_n(predictions, n):
@@ -92,7 +48,7 @@ def get_top_n(predictions, n):
         [(raw item id, rating estimation), ...] of size n.
     '''
 
-    print("get top n")
+    top_n = defaultdict(list)
 
     # First map the predictions to each user.
     for uid, iid, true_r, est, _ in predictions:
@@ -110,8 +66,7 @@ def collaborative_filter():
 
     ratings_dict = select_ratings_dic()
 
-    print("rating dict")
-    print(ratings_dict)
+
     df = pd.DataFrame(ratings_dict)
 
     # A reader is still needed but only the rating_scale param is required.
@@ -144,9 +99,9 @@ def collaborative_filter():
     return top_n
 
 
-def get_suggested_URLs(id):
+def get_suggested_topics(id):
     new_words = []
-
+    wordsIDs = select_words()
     # for all users get item id
     # for uid, user_ratings in top_n.items():
     #     print(uid, [iid for (iid, _) in user_ratings])
@@ -158,7 +113,16 @@ def get_suggested_URLs(id):
         for word, wid in wordsIDs.items():
             if wid == iid:
                 new_words.append(word)
-    print("suggested URLs")
-    print(new_words)
 
-    return new_words
+    topics = select_topics()
+    top_topics = []
+
+    k = 0
+    for query in topics:
+        for word in query:
+            for new_word in new_words:
+                if word == new_word and k < 4:
+                    top_topics.append(query)
+                    k+=1
+
+    return top_topics
