@@ -65,6 +65,7 @@ def history1():
 
 
 def get_recommendations(urls, id):
+
     for url in urls:
 
         print(url)

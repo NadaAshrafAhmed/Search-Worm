@@ -45,6 +45,9 @@ def save_data():
     # todo: get interests, add them on submit in js
     print(id)
 
+    #NOTE! run this one time only and comment
+    #DataBase.insert_interests()
+
     DataBase.add_user(id, name, age, nation, country, gender)
 
     return '<!doctype html> <html lang="en"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1"> <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css"> <title>Registration Complete</title> <style> html, body { background-color: #fff; color: #636b6f; font-family: "Raleway", sans-serif; font-weight: 100; height: 100vh; margin: 0; } .full-height { height: 100vh; } .flex-center { align-items: center; display: flex; justify-content: center; } .content { text-align: center; } .title { font-size: 84px; } .m-b-md { margin-bottom: 30px; } </style> </head> <body> <div class="flex-center position-ref full-height"> <div class="content"> <div class="title m-b-md"> Thank you for your patience </div> </div> </div> </body> </html>'

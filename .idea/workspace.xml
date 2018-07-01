@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c48cd08d-92ba-4a71-8940-bd7bf5345b2e" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/compyler.py" afterPath="$PROJECT_DIR$/Compyler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/icon.png" afterPath="$PROJECT_DIR$/templates/icon.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBase.py" afterPath="$PROJECT_DIR$/DataBase.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Integrating.py" afterPath="$PROJECT_DIR$/Integrating.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RecommendationSystem.py" afterPath="$PROJECT_DIR$/RecommendationSystem.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,49 +15,52 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/git_search_worm_v2$RecommendationSystem.coverage" NAME="RecommendationSystem Coverage Results" MODIFIED="1530451427870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/git_search_worm_v2$RecommendationSystem.coverage" NAME="RecommendationSystem Coverage Results" MODIFIED="1530460410760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/git_search_worm_v2$clustering__1_.coverage" NAME="clustering (1) Coverage Results" MODIFIED="1530224426938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/search_worm" />
     <SUITE FILE_PATH="coverage/git_search_worm_v2$clustering.coverage" NAME="clustering Coverage Results" MODIFIED="1530226095206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/git_search_worm_v2$User.coverage" NAME="User Coverage Results" MODIFIED="1530457846389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../git-search-worm" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DataBase.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Integrating.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Integrating.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="179">
+              <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataBase.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataBase.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="236" column="33" lean-forward="false" selection-start-line="236" selection-start-column="33" selection-end-line="236" selection-end-column="33" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
-                <element signature="e#678#913#0" expanded="false" />
-                <element signature="e#2908#3354#0" expanded="false" />
-                <element signature="e#3382#3737#0" expanded="false" />
-                <element signature="e#3776#4264#0" expanded="false" />
-                <element signature="e#4676#5130#0" expanded="false" />
-                <element signature="e#5163#5746#0" expanded="false" />
-                <element signature="e#6350#6698#0" expanded="false" />
-                <element signature="e#6729#7258#0" expanded="false" />
-                <element signature="e#7311#7701#0" expanded="false" />
-                <element signature="e#7743#8572#0" expanded="false" />
-                <marker date="1530457993359" expanded="true" signature="259:405" ph="INSERT INTO user... " />
-                <marker date="1530457993359" expanded="true" signature="426:444" ph="SELECT * FRO... user" />
-                <marker date="1530457993359" expanded="true" signature="818:861" ph="SELECT name user" />
-                <marker date="1530457993359" expanded="true" signature="1198:1269" ph="insert into ratings_dict... " />
-                <marker date="1530457993359" expanded="true" signature="1872:1934" ph="SELECT word,... userword" />
-                <marker date="1530457993359" expanded="true" signature="2573:2641" ph="INSERT INTO userword... " />
-                <marker date="1530457993359" expanded="true" signature="2697:2823" ph="UPDATE userw... " />
-                <marker date="1530457993359" expanded="true" signature="3048:3079" ph="SELECT max(i... topic" />
-                <marker date="1530457993359" expanded="true" signature="3217:3303" ph="INSERT INTO topic... " />
-                <marker date="1530457993359" expanded="true" signature="3522:3559" ph="SELECT word1... topic" />
-                <marker date="1530457993359" expanded="true" signature="4035:4097" ph="SELECT word,... userword" />
-                <marker date="1530457993359" expanded="true" signature="4432:4463" ph="SELECT word_... words" />
-                <marker date="1530457993359" expanded="true" signature="5303:5352" ph="SELECT user_... ratings_dict" />
-                <marker date="1530457993359" expanded="true" signature="5926:6037" ph="INSERT INTO ratings_dict... " />
-                <marker date="1530457993359" expanded="true" signature="6490:6524" ph="SELECT id, i... interests" />
-                <marker date="1530457993359" expanded="true" signature="7023:7075" ph="insert into interests... " />
-                <marker date="1530457993359" expanded="true" signature="7486:7552" ph="INSERT INTO interests... " />
-                <marker date="1530457993359" expanded="true" signature="7878:7908" ph="select inter... interests" />
-                <marker date="1530457993359" expanded="true" signature="7878:8004" ph="select inter... interests" />
+                <marker date="1530462101923" expanded="true" signature="259:405" ph="INSERT INTO user... " />
+                <marker date="1530462101923" expanded="true" signature="426:444" ph="SELECT * FRO... user" />
+                <marker date="1530462101923" expanded="true" signature="977:1020" ph="SELECT name user" />
+                <marker date="1530462101923" expanded="true" signature="1357:1428" ph="insert into ratings_dict... " />
+                <marker date="1530462101923" expanded="true" signature="2091:2153" ph="SELECT word,... userword" />
+                <marker date="1530462101923" expanded="true" signature="2792:2860" ph="INSERT INTO userword... " />
+                <marker date="1530462101923" expanded="true" signature="2916:3042" ph="UPDATE userw... " />
+                <marker date="1530462101923" expanded="true" signature="3267:3298" ph="SELECT max(i... topic" />
+                <marker date="1530462101923" expanded="true" signature="3436:3522" ph="INSERT INTO topic... " />
+                <marker date="1530462101923" expanded="true" signature="3741:3778" ph="SELECT word1... topic" />
+                <marker date="1530462101923" expanded="true" signature="4254:4316" ph="SELECT word,... userword" />
+                <marker date="1530462101923" expanded="true" signature="4651:4682" ph="SELECT word_... words" />
+                <marker date="1530462101923" expanded="true" signature="5030:5063" ph="select count... words" />
+                <marker date="1530462101923" expanded="true" signature="6287:6336" ph="SELECT user_... ratings_dict" />
+                <marker date="1530462101923" expanded="true" signature="6910:7021" ph="INSERT INTO ratings_dict... " />
+                <marker date="1530462101923" expanded="true" signature="7478:7512" ph="SELECT id, i... interests" />
+                <marker date="1530462101923" expanded="true" signature="8062:8114" ph="insert into interests... " />
+                <marker date="1530462101923" expanded="true" signature="8578:8643" ph="INSERT INTO user_interests... " />
+                <marker date="1530462101923" expanded="true" signature="8969:8999" ph="select inter... interests" />
+                <marker date="1530462101923" expanded="true" signature="8969:9095" ph="select inter... interests" />
               </folding>
             </state>
           </provider>
@@ -73,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecommendationSystem.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RecommendationSystem.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RecommendationSystem.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="143">
+              <caret line="48" column="13" lean-forward="true" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
               </folding>
@@ -88,10 +91,22 @@
       <file leaf-file-name="User.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../git-search-worm/User.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
+            <state relative-caret-position="251">
               <caret line="47" column="29" lean-forward="false" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
               <folding>
                 <marker date="1530457845363" expanded="true" signature="389:500" ph="INSERT INTO ratings_dict... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/form.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="179">
+              <caret line="142" column="39" lean-forward="false" selection-start-line="142" selection-start-column="39" selection-end-line="142" selection-end-column="39" />
+              <folding>
+                <marker date="1530461815107" expanded="true" signature="6544:6648" ph="..." />
               </folding>
             </state>
           </provider>
@@ -114,16 +129,19 @@
       <find>id</find>
       <find>calc</find>
       <find>add</find>
-      <find>password='root'</find>
       <find>words</find>
       <find>topic</find>
       <find>jj12riwl_hwdgk95ii</find>
       <find>zombie96</find>
       <find>print</find>
+      <find>password='root'</find>
+      <find>user_in</find>
+      <find>password='zombie96'</find>
     </findStrings>
     <replaceStrings>
-      <replace>password='zombie96'</replace>
       <replace>root</replace>
+      <replace>password='zombie96'</replace>
+      <replace>password='root'</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -144,13 +162,13 @@
         <option value="$PROJECT_DIR$/clustering.py" />
         <option value="$PROJECT_DIR$/compyler.py" />
         <option value="$PROJECT_DIR$/top_n.json" />
-        <option value="$PROJECT_DIR$/templates/form.html" />
-        <option value="$PROJECT_DIR$/Integrating.py" />
         <option value="$PROJECT_DIR$/Collaborative_filter.py" />
         <option value="$PROJECT_DIR$/db.py" />
-        <option value="$PROJECT_DIR$/RecommendationSystem.py" />
         <option value="$PROJECT_DIR$/../git-search-worm/User.py" />
+        <option value="$PROJECT_DIR$/Integrating.py" />
+        <option value="$PROJECT_DIR$/templates/form.html" />
         <option value="$PROJECT_DIR$/DataBase.py" />
+        <option value="$PROJECT_DIR$/RecommendationSystem.py" />
       </list>
     </option>
   </component>
@@ -253,7 +271,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.User">
+  <component name="RunManager" selected="Python.RecommendationSystem">
     <configuration name="RecommendationSystem" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -334,8 +352,8 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.User" />
-        <item index="1" class="java.lang.String" itemvalue="Python.RecommendationSystem" />
+        <item index="0" class="java.lang.String" itemvalue="Python.RecommendationSystem" />
+        <item index="1" class="java.lang.String" itemvalue="Python.User" />
         <item index="2" class="java.lang.String" itemvalue="Python.clustering" />
         <item index="3" class="java.lang.String" itemvalue="Python.clustering (1)" />
       </list>
@@ -361,15 +379,16 @@
     <frame x="59" y="24" width="1303" height="780" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3075697" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3075697" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -378,7 +397,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
@@ -398,7 +416,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -651,16 +669,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-          <folding>
-            <marker date="1530451221203" expanded="true" signature="6541:6648" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -681,14 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5370">
           <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Integrating.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1944">
-          <caret line="248" column="17" lean-forward="false" selection-start-line="248" selection-start-column="17" selection-end-line="248" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -733,19 +733,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RecommendationSystem.py">
+    <entry file="file://$PROJECT_DIR$/Integrating.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="179">
+          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
           <folding>
-            <element signature="e#0#55#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="142" column="39" lean-forward="false" selection-start-line="142" selection-start-column="39" selection-end-line="142" selection-end-column="39" />
+          <folding>
+            <marker date="1530461815107" expanded="true" signature="6544:6648" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataBase.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="236" column="33" lean-forward="false" selection-start-line="236" selection-start-column="33" selection-end-line="236" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+            <marker date="1530462101923" expanded="true" signature="259:405" ph="INSERT INTO user... " />
+            <marker date="1530462101923" expanded="true" signature="426:444" ph="SELECT * FRO... user" />
+            <marker date="1530462101923" expanded="true" signature="977:1020" ph="SELECT name user" />
+            <marker date="1530462101923" expanded="true" signature="1357:1428" ph="insert into ratings_dict... " />
+            <marker date="1530462101923" expanded="true" signature="2091:2153" ph="SELECT word,... userword" />
+            <marker date="1530462101923" expanded="true" signature="2792:2860" ph="INSERT INTO userword... " />
+            <marker date="1530462101923" expanded="true" signature="2916:3042" ph="UPDATE userw... " />
+            <marker date="1530462101923" expanded="true" signature="3267:3298" ph="SELECT max(i... topic" />
+            <marker date="1530462101923" expanded="true" signature="3436:3522" ph="INSERT INTO topic... " />
+            <marker date="1530462101923" expanded="true" signature="3741:3778" ph="SELECT word1... topic" />
+            <marker date="1530462101923" expanded="true" signature="4254:4316" ph="SELECT word,... userword" />
+            <marker date="1530462101923" expanded="true" signature="4651:4682" ph="SELECT word_... words" />
+            <marker date="1530462101923" expanded="true" signature="5030:5063" ph="select count... words" />
+            <marker date="1530462101923" expanded="true" signature="6287:6336" ph="SELECT user_... ratings_dict" />
+            <marker date="1530462101923" expanded="true" signature="6910:7021" ph="INSERT INTO ratings_dict... " />
+            <marker date="1530462101923" expanded="true" signature="7478:7512" ph="SELECT id, i... interests" />
+            <marker date="1530462101923" expanded="true" signature="8062:8114" ph="insert into interests... " />
+            <marker date="1530462101923" expanded="true" signature="8578:8643" ph="INSERT INTO user_interests... " />
+            <marker date="1530462101923" expanded="true" signature="8969:8999" ph="select inter... interests" />
+            <marker date="1530462101923" expanded="true" signature="8969:9095" ph="select inter... interests" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../git-search-worm/User.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
+        <state relative-caret-position="251">
           <caret line="47" column="29" lean-forward="false" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
           <folding>
             <marker date="1530457845363" expanded="true" signature="389:500" ph="INSERT INTO ratings_dict... " />
@@ -753,41 +793,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataBase.py">
+    <entry file="file://$PROJECT_DIR$/RecommendationSystem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="143">
+          <caret line="48" column="13" lean-forward="true" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
           <folding>
-            <element signature="e#0#22#0" expanded="true" />
-            <element signature="e#678#913#0" expanded="false" />
-            <element signature="e#2908#3354#0" expanded="false" />
-            <element signature="e#3382#3737#0" expanded="false" />
-            <element signature="e#3776#4264#0" expanded="false" />
-            <element signature="e#4676#5130#0" expanded="false" />
-            <element signature="e#5163#5746#0" expanded="false" />
-            <element signature="e#6350#6698#0" expanded="false" />
-            <element signature="e#6729#7258#0" expanded="false" />
-            <element signature="e#7311#7701#0" expanded="false" />
-            <element signature="e#7743#8572#0" expanded="false" />
-            <marker date="1530457993359" expanded="true" signature="259:405" ph="INSERT INTO user... " />
-            <marker date="1530457993359" expanded="true" signature="426:444" ph="SELECT * FRO... user" />
-            <marker date="1530457993359" expanded="true" signature="818:861" ph="SELECT name user" />
-            <marker date="1530457993359" expanded="true" signature="1198:1269" ph="insert into ratings_dict... " />
-            <marker date="1530457993359" expanded="true" signature="1872:1934" ph="SELECT word,... userword" />
-            <marker date="1530457993359" expanded="true" signature="2573:2641" ph="INSERT INTO userword... " />
-            <marker date="1530457993359" expanded="true" signature="2697:2823" ph="UPDATE userw... " />
-            <marker date="1530457993359" expanded="true" signature="3048:3079" ph="SELECT max(i... topic" />
-            <marker date="1530457993359" expanded="true" signature="3217:3303" ph="INSERT INTO topic... " />
-            <marker date="1530457993359" expanded="true" signature="3522:3559" ph="SELECT word1... topic" />
-            <marker date="1530457993359" expanded="true" signature="4035:4097" ph="SELECT word,... userword" />
-            <marker date="1530457993359" expanded="true" signature="4432:4463" ph="SELECT word_... words" />
-            <marker date="1530457993359" expanded="true" signature="5303:5352" ph="SELECT user_... ratings_dict" />
-            <marker date="1530457993359" expanded="true" signature="5926:6037" ph="INSERT INTO ratings_dict... " />
-            <marker date="1530457993359" expanded="true" signature="6490:6524" ph="SELECT id, i... interests" />
-            <marker date="1530457993359" expanded="true" signature="7023:7075" ph="insert into interests... " />
-            <marker date="1530457993359" expanded="true" signature="7486:7552" ph="INSERT INTO interests... " />
-            <marker date="1530457993359" expanded="true" signature="7878:7908" ph="select inter... interests" />
-            <marker date="1530457993359" expanded="true" signature="7878:8004" ph="select inter... interests" />
+            <element signature="e#0#55#0" expanded="true" />
           </folding>
         </state>
       </provider>
