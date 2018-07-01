@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c48cd08d-92ba-4a71-8940-bd7bf5345b2e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.google-cookie" afterPath="$PROJECT_DIR$/.google-cookie" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBase.py" afterPath="$PROJECT_DIR$/DataBase.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RecommendationSystem.py" afterPath="$PROJECT_DIR$/RecommendationSystem.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/css/style.css" afterPath="$PROJECT_DIR$/templates/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/enter_data.html" afterPath="$PROJECT_DIR$/templates/enter_data.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/enter_data.js" afterPath="$PROJECT_DIR$/templates/enter_data.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/form.html" afterPath="$PROJECT_DIR$/templates/form.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/top_n.json" afterPath="$PROJECT_DIR$/top_n.json" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -74,8 +69,8 @@
       <file leaf-file-name="enter_data.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/enter_data.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+            <state relative-caret-position="127">
+              <caret line="23" column="112" selection-start-line="23" selection-start-column="100" selection-end-line="23" selection-end-column="112" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -118,8 +113,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="102" column="20" selection-start-line="102" selection-start-column="20" selection-end-line="102" selection-end-column="20" />
+            <state relative-caret-position="359">
+              <caret line="115" column="15" selection-start-line="115" selection-start-column="15" selection-end-line="115" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -207,11 +202,11 @@
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/templates/enter_data.js" />
         <option value="$PROJECT_DIR$/templates/form.html" />
-        <option value="$PROJECT_DIR$/templates/enter_data.html" />
-        <option value="$PROJECT_DIR$/templates/css/style.css" />
         <option value="$PROJECT_DIR$/RecommendationSystem.py" />
         <option value="$PROJECT_DIR$/DataBase.py" />
         <option value="$PROJECT_DIR$/templates/manifest.json" />
+        <option value="$PROJECT_DIR$/templates/css/style.css" />
+        <option value="$PROJECT_DIR$/templates/enter_data.html" />
       </list>
     </option>
   </component>
@@ -680,7 +675,14 @@
       <option name="project" value="LOCAL" />
       <updated>1530413216672</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Send Chosen Interests in Request&#10;Alter Getting Started View">
+      <created>1530476225777</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1530476225777</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -750,7 +752,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fix Registration Bug" />
     <MESSAGE value="Add Search Bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Search Bar" />
+    <MESSAGE value="Send Chosen Interests in Request&#10;Alter Getting Started View" />
+    <option name="LAST_COMMIT_MESSAGE" value="Send Chosen Interests in Request&#10;Alter Getting Started View" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -972,14 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="102" column="20" selection-start-line="102" selection-start-column="20" selection-end-line="102" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/top_n.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -1053,10 +1048,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="115" column="15" selection-start-line="115" selection-start-column="15" selection-end-line="115" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/enter_data.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        <state relative-caret-position="127">
+          <caret line="23" column="112" selection-start-line="23" selection-start-column="100" selection-end-line="23" selection-end-column="112" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
