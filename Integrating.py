@@ -125,7 +125,7 @@ def get_recommendations(urls,id):
     if len(topic1)>0:
 
         topic_words1 = LDA(topic1)
-
+        db.add_word( id, topic_words1[0] + topic_words1[1] + topic_words1[2])
         for i in topic_words1:
             db.add_topic(i[0],i[1],i[2])
             for j in i :
@@ -144,7 +144,7 @@ def get_recommendations(urls,id):
     if len(topic2) > 0:
 
         topic_words2 = LDA(topic2)
-
+        db.add_word( id, topic_words2[0] + topic_words2[1] + topic_words2[2])
         for i in topic_words2:
             db.add_topic( i[0], i[1], i[2] )
             for j in i :
@@ -161,6 +161,7 @@ def get_recommendations(urls,id):
     if len(topic3) > 0:
 
         topic_words3 = LDA(topic3)
+        db.add_word( id, topic_words3[0] + topic_words3[1] + topic_words3[2])
 
         for i in topic_words3:
             db.add_topic( i[0], i[1], i[2] )
@@ -178,6 +179,7 @@ def get_recommendations(urls,id):
     if len(topic4) > 0:
 
         topic_words4 = LDA(topic4)
+        db.add_word( id,topic_words4[0] + topic_words4[1] + topic_words4[2] )
 
         for i in topic_words4:
             db.add_topic( i[0], i[1], i[2] )
@@ -191,11 +193,6 @@ def get_recommendations(urls,id):
                             k += 1
                 except Exception as e:
                     print( e )
-
-    db.add_word( id, topic_words1[0] + topic_words1[1] + topic_words1[2]
-                   + topic_words2[0] + topic_words2[1] + topic_words2[2]
-                   + topic_words3[0] + topic_words3[1] + topic_words3[2]
-                   + topic_words4[0] + topic_words4[1] + topic_words4[2])
 
     url1 = list( set( urls1 ) )
     url2 = list( set( urls2 ) )

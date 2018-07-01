@@ -21,12 +21,7 @@
     "default_popup": "popup.html"
     // optional
   },
-  "content_scripts": [
-    {
-      "matches": ["http://localhost:63342/Search-Worm/Search-Worm/templates/SpecRunner.html?_ijt=284orm740i99ekb4922l58cscu"],
-      "js": ["creatRegisterForm.js"]
-    }
-  ],
+  
   "permissions": [
     "history",
     "http://127.0.0.1:5000/",

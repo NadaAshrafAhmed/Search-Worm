@@ -79,10 +79,10 @@ describe('Enter Data',function(){
     },2000);
 
     it("New User submit data", function(done) {
+        var db;
+        chrome.storage.local.set({'machine-id':id});
 
-        chrome.storage.local.set({'machine-id':"ll"});
-
-        var theWindow = window.open('enter_data.html'),
+        var theWindow = window.open('enter_data.html?id='+id),
         theScript = document.createElement('script');
         theScript.src="submitData.js";
 
@@ -106,11 +106,11 @@ describe('Enter Data',function(){
                     db=item['database'];
                 }
             });
-        },6000);
+        },7000);
         setTimeout(function() {
              expect(db).toContain(true);
         done();
-        },7000);
-    },8000);
+        },9000);
+    },10000);
 
 });

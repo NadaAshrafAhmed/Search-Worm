@@ -33,7 +33,8 @@ def history():
     id = request.get_json()['ID']
     print(id)
 
-    return get_recommendations(urls,id)
+    # return get_recommendations(urls,id)
+    return history1()
 
 
 @app.route('/save_data',methods=["POST"])
