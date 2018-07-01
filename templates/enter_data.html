@@ -13,20 +13,25 @@
 <body style="background-image: url('img/nature.jpeg');">
 <section id="contact">
     <div class="container">
-        <h2 class="card-header header">Getting Started</h2>
+        <h1 class="card-header header">Getting Started</h1>
         <form action="http://127.0.0.1:5000/save_data" method="post" id="form" class="form-control transparent-light">
-            <div class="form-group">
-                <input type="text" id="name" name="name" class="form-control" placeholder="Name" required="">
+            <div class="form-group row style-row">
+                <div class="col-md-6">
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Name" required="">
+                </div>
+                <div class="col-md-6">
+                    <input type="number" id="age" name="age" class="form-control" placeholder="Age" required="">
+                </div>
             </div>
-            <div class="form-group">
-                <input type="number" id="age" name="age" class="form-control" placeholder="Age" required="">
-            </div>
-            <div class="form-group">
-                <input type="text" id="nation" name="nation" class="form-control" placeholder="Nationality" required="">
-            </div>
-            <div class="form-group">
-                <input type="text" id="place" name="place" class="form-control" placeholder="Current Living"
-                       required="">
+            <div class="form-group row style-row">
+                <div class="col-md-6">
+                    <input type="text" id="nation" name="nation" class="form-control" placeholder="Nationality"
+                           required="">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" id="place" name="place" class="form-control" placeholder="Current Living"
+                           required="">
+                </div>
             </div>
             <div class="form-group">
                 <label style="width: 8%"><b> Gender:</b></label>
@@ -38,16 +43,27 @@
                 <label><b> Interests:</b></label>
                 <br>
                 <div class="list-group-horizontal" id="topic-list">
-                    <input type="button"  style="width: 19%;margin: 1px" id = "topic1" class=" border rounded list-group-item list-group-item-action dummy" value="Technology">
-                    <input type="button"  style="width: 19%;margin: 1px" id = "topic2" class=" border rounded list-group-item list-group-item-action dummy" value="Space">
-                    <input type="button"  style="width: 19%;margin: 1px" id = "topic3" class=" border rounded list-group-item list-group-item-action dummy" value="Music">
-                    <input type="button"  style="width: 19%;margin: 1px" id = "topic4" class=" border rounded list-group-item list-group-item-action dummy" value="Sport">
-                    <input type="button"  style="width: 19%;margin: 1px" id = "topic5" class=" border rounded list-group-item list-group-item-action dummy" value="Nature and animals">
-                    <input type="button"  style="width: 19%;margin: 1px" id = "topic6" class=" border rounded list-group-item list-group-item-action dummy" value="Science">
-                    <input type="button"  style="width: 19%;margin: 1px" id = "topic7" class=" border rounded list-group-item list-group-item-action dummy" value="Fashion">
-                    <input type="button"  style="width: 19%;margin: 1px" id = "topic8" class=" border rounded list-group-item list-group-item-action dummy" value="Programming">
-                    <input type="button"  style="width: 19%;margin: 1px" id = "topic9" class=" border rounded list-group-item list-group-item-action dummy" value="Education">
-                    <input type="button"  style="width: 19%;margin: 1px" id = "topic10" class=" border rounded list-group-item list-group-item-action dummy" value="Movies">
+                    <input type="button" style="width: 19%;margin: 1px" id="topic1"
+                           class=" border rounded list-group-item list-group-item-action dummy" value="Technology">
+                    <input type="button" style="width: 19%;margin: 1px" id="topic2"
+                           class=" border rounded list-group-item list-group-item-action dummy" value="Space">
+                    <input type="button" style="width: 19%;margin: 1px" id="topic3"
+                           class=" border rounded list-group-item list-group-item-action dummy" value="Music">
+                    <input type="button" style="width: 19%;margin: 1px" id="topic4"
+                           class=" border rounded list-group-item list-group-item-action dummy" value="Sport">
+                    <input type="button" style="width: 19%;margin: 1px" id="topic5"
+                           class=" border rounded list-group-item list-group-item-action dummy"
+                           value="Nature and animals">
+                    <input type="button" style="width: 19%;margin: 1px" id="topic6"
+                           class=" border rounded list-group-item list-group-item-action dummy" value="Science">
+                    <input type="button" style="width: 19%;margin: 1px" id="topic7"
+                           class=" border rounded list-group-item list-group-item-action dummy" value="Fashion">
+                    <input type="button" style="width: 19%;margin: 1px" id="topic8"
+                           class=" border rounded list-group-item list-group-item-action dummy" value="Programming">
+                    <input type="button" style="width: 19%;margin: 1px" id="topic9"
+                           class=" border rounded list-group-item list-group-item-action dummy" value="Education">
+                    <input type="button" style="width: 19%;margin: 1px" id="topic10"
+                           class=" border rounded list-group-item list-group-item-action dummy" value="Movies">
                 </div>
             </div>
             <div class="form-group">
@@ -64,7 +80,7 @@
                     </li>
                 </ul>
             </div>
-            <label><input type="checkbox" name="q" id="a-0" required autofocus>
+            <label><input type="checkbox" name="q" id="a-0" required>
                 I accept Terms and Conditions
             </label>
             <br>

@@ -2,7 +2,7 @@ import mysql.connector
 from collections import defaultdict
 
 
-def add_user(id, name, age, nation, country, gender):
+def add_user(id, name, age, nation, country, gender, interests):
     db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
     cur = db.cursor()
     cur.execute("INSERT INTO user VALUES ('" + id + "', '" + name + "', '" + str(age)
@@ -15,11 +15,6 @@ def add_user(id, name, age, nation, country, gender):
     cur.close()
     db.close()
 
-    interests = ["Technology", "Space", "Music", "Sports", "Nature and animals",
-                 "Science", "Fashion", "Programming", "Education", "Movies"]
-
-
-    # TODO : add interests array to param and uncomment the comment
     manage_user_interests(id, interests)
 
 
@@ -53,7 +48,8 @@ def manage_user_interests(user_id, interests):
     cur.close()
     db.close()
 
-    insert_user_interest(user_id, interest)
+    # Leeh?
+    # insert_user_interest(user_id, interests)
 
 
 def add_word(user_id, words):
@@ -276,6 +272,7 @@ def insert_user_interest(user_id, interests):
     stmt = "INSERT INTO user_interests (user_id, interest_id) VALUES (%s, %s);"
 
     for i in interests:
+        print(user_id,  interest_ids[i], "!!!!!")
         data = (user_id, interest_ids[i])
         cur.execute(stmt, data)
 
