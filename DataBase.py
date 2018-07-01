@@ -15,6 +15,9 @@ def add_user(id, name, age, nation, country, gender):
     cur.close()
     db.close()
 
+    # TODO : add interests array to param and uncomment the comment
+    # manage_user_interest(id, interests)
+
 
 def user_exist(id):
     db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
@@ -27,6 +30,23 @@ def user_exist(id):
 def manage_collab_param(user_id, words):
     add_word(user_id, words)
     insert_words(words)
+
+
+def manage_user_interests(user_id, interests):
+    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    cur = db.cursor()
+    stmt = "insert into ratings_dict (user_id, item_id, rating) values (%s, %s, %s);"
+    insert_user_interest(user_id, interests)
+    words = select_words()
+    for interest in interests:
+        for word, wid in words.items():
+            if word == interest:
+                data = (user_id, wid, 5)
+                cur.execute(stmt, data)
+
+    db.commit()
+    cur.close()
+    db.close()
 
 
 def add_word(user_id, words):
@@ -171,9 +191,76 @@ def insert_ratings_dic(ratings_dict):
         data = (user_id, item_id, ui_rating, ui_rating)
         cur.execute(stmt, data)
 
+
+def select_interests():
+    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    cur = db.cursor()
+    cur.execute("SELECT id, interest FROM interests;")
+    interest_ids = {}
+    for id, interest in cur.fetchall():
+        interest_ids[interest] = id
+
     db.commit()
     cur.close()
     db.close()
+
+    return interest_ids
+
+
+def insert_interests():
+    interests = ["Technology", "Space", "Music", "Sports", "Nature and animals",
+                 "Science", "Fashion", "Programming", "Education", "Movies"]
+
+    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    cur = db.cursor()
+    stmt = "insert into interests (id, interest) values (%s, %s)"
+
+    for i in range(0, len(interests)):
+        data = (i, interests[i])
+        cur.execute(stmt, data)
+
+    db.commit()
+    cur.close()
+    db.close()
+
+    insert_words(interests)
+
+
+def insert_user_interest(user_id, interests):
+    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    cur = db.cursor()
+
+    interest_ids = select_interests()
+
+    stmt = "INSERT INTO user_interest (user_id, user_interest) VALUES (%s, %s);"
+
+    for i in interests:
+        data = (user_id, interest_ids[i])
+        cur.execute(stmt, data)
+
+    db.commit()
+    cur.close()
+    db.close()
+
+
+def select_user_interest(user_id):
+    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    cur = db.cursor()
+    stmt = "select interest from interests " \
+           "left join user_interests on id = interest_id " \
+           "where user_id = %s;"
+    data = (user_id)
+    cur.execute(stmt, data)
+    user_interests = []
+    for interest in cur.fetchall():
+        user_interests.append(interest)
+
+    db.commit()
+    cur.close()
+    db.close()
+
+    return user_interests
+
 
 
     # # you must create a Cursor object. It will let
