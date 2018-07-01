@@ -19,7 +19,7 @@ import os
 import re
 import math
 
-import db
+import DataBase
 
 from googlesearch import search
 
@@ -126,7 +126,7 @@ def get_recommendations(urls, id):
         topic_words1 = LDA(topic1)
 
         for i in topic_words1:
-            db.add_topic(i[0], i[1], i[2])
+            DataBase.add_topic(i[0], i[1], i[2])
             for j in i:
                 new_words.append(j)
                 k = 0
@@ -144,7 +144,7 @@ def get_recommendations(urls, id):
         topic_words2 = LDA(topic2)
 
         for i in topic_words2:
-            db.add_topic(i[0], i[1], i[2])
+            DataBase.add_topic(i[0], i[1], i[2])
             for j in i:
                 k = 0
                 new_words.append(j)
@@ -162,7 +162,7 @@ def get_recommendations(urls, id):
         topic_words3 = LDA(topic3)
 
         for i in topic_words3:
-            db.add_topic(i[0], i[1], i[2])
+            DataBase.add_topic(i[0], i[1], i[2])
             for j in i:
                 k = 0
                 new_words.append(j)
@@ -180,7 +180,7 @@ def get_recommendations(urls, id):
         topic_words4 = LDA(topic4)
 
         for i in topic_words4:
-            db.add_topic(i[0], i[1], i[2])
+            DataBase.add_topic(i[0], i[1], i[2])
             for j in i:
                 k = 0
                 new_words.append(j)
@@ -193,10 +193,10 @@ def get_recommendations(urls, id):
                 except Exception as e:
                     print(e)
 
-    db.manage_collab_param(id, topic_words1[0] + topic_words1[1] + topic_words1[2]
-                + topic_words2[0] + topic_words2[1] + topic_words2[2]
-                + topic_words3[0] + topic_words3[1] + topic_words3[2]
-                + topic_words4[0] + topic_words4[1] + topic_words4[2])
+    DataBase.manage_collab_param(id, topic_words1[0] + topic_words1[1] + topic_words1[2]
+                                 + topic_words2[0] + topic_words2[1] + topic_words2[2]
+                                 + topic_words3[0] + topic_words3[1] + topic_words3[2]
+                                 + topic_words4[0] + topic_words4[1] + topic_words4[2])
 
     url1 = list(set(urls1))
     url2 = list(set(urls2))

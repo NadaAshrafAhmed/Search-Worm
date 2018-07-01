@@ -3,7 +3,7 @@ from collections import defaultdict
 import pandas as pd
 from surprise import Reader, Dataset, KNNBasic, accuracy
 from surprise.model_selection import KFold
-from db import *
+from DataBase import *
 
 import json
 
