@@ -2,10 +2,11 @@ import mysql.connector
 from collections import defaultdict
 
 
-def add_user(id, name, age, nation):
+def add_user(id, name, age, nation, country, gender):
     db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
     cur = db.cursor()
-    cur.execute("INSERT INTO user VALUES ('" + id + "', '" + name + "', '" + str(age) + "', '" + nation + "');")
+    cur.execute("INSERT INTO user VALUES ('" + id + "', '" + name + "', '" + str(age)
+                + "', '" + nation + "', '" + country + "', '" + gender + "' );")
     cur.execute("SELECT * FROM user")
     for r in cur.fetchall():
         print(r)
