@@ -177,7 +177,7 @@ function sendHistory(storedMacId, numOfLinks) {
 
         var xmlhttp = new XMLHttpRequest();
 
-        xmlhttp.open("POST", "http://127.0.0.1:5000/history");
+        xmlhttp.open("POST", "http://127.0.0.1:5000/start");
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xmlhttp.send(JSON.stringify({ID: storedMacId, urls: urls}));
 //        var today = new Date();
