@@ -71,3 +71,22 @@ a:focus {
     border-bottom-left-radius:0;
     border-right-width: 1px;
 }
+
+input[type=text] {
+            width: 30px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.5);
+            background-image: url('../img/toolbar_find.png');
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+        input[type=text]:focus {
+            width: 100%;
+        }
