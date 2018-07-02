@@ -1,6 +1,7 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.cluster import KMeans
+# from yellowbrick.text import TSNEVisualizer
 
 import pandas as pd
 
@@ -18,6 +19,10 @@ def k_means(documents):
     transformer = TfidfTransformer(smooth_idf=False)
     tfidf = transformer.fit_transform(X)
     print(tfidf.shape)
+    # todo: get Graphs
+    # tsne = TSNEVisualizer(labels=["documents"])
+    # tsne.fit(tfidf)
+    # tsne.poof()
 
     num_clusters = 4  # Change it according to your data.
     km = KMeans(n_clusters=num_clusters)
