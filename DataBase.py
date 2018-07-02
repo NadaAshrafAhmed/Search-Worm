@@ -2,17 +2,18 @@ import mysql.connector
 from collections import defaultdict
 
 def add_user(id, name, age, nation, country, gender, interests):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
-    cur = db.cursor()
-    cur.execute("INSERT INTO user VALUES ('" + id + "', '" + name + "', '" + str(age)
-                + "', '" + nation + "', '" + country + "', '" + gender + "' );")
-    cur.execute("SELECT * FROM user")
-    for r in cur.fetchall():
-        print(r)
-    db.commit()
+    if not user_exist(id):
+        db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+        cur = db.cursor()
+        cur.execute("INSERT INTO user VALUES ('" + id + "', '" + name + "', '" + str(age)
+                    + "', '" + nation + "', '" + country + "', '" + gender + "' );")
+        cur.execute("SELECT * FROM user")
+        for r in cur.fetchall():
+            print(r)
+        db.commit()
 
-    cur.close()
-    db.close()
+        cur.close()
+        db.close()
 
     manage_user_interests(id, interests)
 
@@ -296,16 +297,3 @@ def select_user_interest(user_id):
     return user_interests
 
 
-
-    # # you must create a Cursor object. It will let
-    # #  you execute all the queries you need
-    # cur = db.cursor()
-    #
-    # # Use all the SQL you like
-    # cur.execute("SELECT * FROM words")
-    #
-    # # print all the first cell of all the rows
-    # for row in cur.fetchall():
-    #     print (row[0])
-    #
-    # db.close()
