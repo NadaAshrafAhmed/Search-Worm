@@ -204,31 +204,7 @@ function sendHistory(storedMacId, numOfLinks) {
     });
 }
 
-chrome.storage.local.get('offlinePages', function (pages) {
-        if (pages['offlinePages']) {
-            for (var i = 0; i < pages['offlinePages'].length; i++) {
-                var link = document.getElementById('offline');
-                if (link == undefined)
-                    return;
-                link.innerHTML += "<li> <a href='#' id='" + i + "'>" + pages['offlinePages'][i]['title'] + "</a><button  style='color: red;' id='delete" + i + "' type='button' title='Remove' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button></li>";
-            }
-            for (i = 0; i < pages['offlinePages'].length; i++) {
-                (function (i) {
-                    document.getElementById(i).addEventListener('click', function (event) {
-                        var winPrint = window.open();
-                        winPrint.document.write(pages['offlinePages'][i]['html']);
-                        winPrint.document.close();
-                        winPrint.focus();
-                    }, false);
-                    document.getElementById("delete" + i).addEventListener('click', function (event) {
-                        delete_saved_page(i);
-                    }, false);
-
-                })(i);
-            }
-        }
-    }
-);
+offline_list();
 
 document.getElementById('upload-image').addEventListener('change', readURL, true);
 function readURL() {
@@ -256,3 +232,50 @@ function creatRegisterForm(storedMacId) {
     document.body.appendChild(f);
     f.submit();
 }
+
+
+document.getElementById('search').addEventListener('keyup', offline_list, true);
+document.getElementById('dummy-form').addEventListener('reset', offline_list, true);
+function offline_list() {
+    chrome.storage.local.get('offlinePages', function (pages) {
+            var search = document.getElementById("search").value.toUpperCase();
+            var link = document.getElementById('offline');
+            if (link == undefined)
+                return;
+            link.innerHTML = "";
+            if (pages['offlinePages'] && pages['offlinePages'].length) {
+                for (var i = 0; i < pages['offlinePages'].length; i++) {
+                    if (pages['offlinePages'][i]['title'].toUpperCase().includes(search)) {
+                        link.innerHTML += "<li> <a href='#' id='" + i + "'>" + pages['offlinePages'][i]['title'] + "</a><button  style='color: red;' id='delete" + i + "' type='button' title='Remove' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button></li>";
+                    }
+                }
+                for (i = 0; i < pages['offlinePages'].length; i++) {
+                    if (pages['offlinePages'][i]['title'].toUpperCase().includes(search)) {
+                        (function (i) {
+                            document.getElementById(i).addEventListener('click', function (event) {
+                                var winPrint = window.open();
+                                winPrint.document.write(pages['offlinePages'][i]['html']);
+                                winPrint.document.close();
+                                winPrint.focus();
+                            }, false);
+                            document.getElementById("delete" + i).addEventListener('click', function (event) {
+                                delete_saved_page(i);
+                            }, false);
+
+                        })(i);
+                    }
+                }
+                if (link.innerHTML.length == 0) {
+                    link.innerHTML = "No Search Results.";
+                }
+            } else {
+                link.innerHTML = "No Saved Pages.";
+            }
+        }
+    );
+}
+
+
+document.getElementById("dummy-form").addEventListener('submit', function (event) {
+    event.preventDefault();
+}, false);

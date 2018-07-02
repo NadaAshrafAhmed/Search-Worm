@@ -238,7 +238,7 @@ def select_interests_ids():
 
 
 def insert_interests():
-    interests = ["Technology", "Space", "Music", "Sports", "Nature and animals",
+    interests = ["Technology", "Space", "Music", "Sports", "Nature and Animals",
                  "Science", "Fashion", "Programming", "Education", "Movies"]
 
     iid = select_words_size()
