@@ -1,9 +1,8 @@
 import mysql.connector
 from collections import defaultdict
 
-
-def add_user(id, name, age, nation, country, gender):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+def add_user(id, name, age, nation, country, gender, interests):
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     cur.execute("INSERT INTO user VALUES ('" + id + "', '" + name + "', '" + str(age)
                 + "', '" + nation + "', '" + country + "', '" + gender + "' );")
@@ -15,16 +14,11 @@ def add_user(id, name, age, nation, country, gender):
     cur.close()
     db.close()
 
-    interests = ["Technology", "Space", "Music", "Sports", "Nature and animals",
-                 "Science", "Fashion", "Programming", "Education", "Movies"]
-
-
-    # TODO : add interests array to param and uncomment the comment
     manage_user_interests(id, interests)
 
 
 def user_exist(id):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     cur.execute("SELECT name FROM user WHERE id='" + id + "';")
     cur.fetchall()
@@ -37,7 +31,7 @@ def manage_collab_param(user_id, words):
 
 
 def manage_user_interests(user_id, interests):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     stmt = "insert into ratings_dict (user_id, item_id, rating) values (%s, %s, %s);"
     insert_user_interest(user_id, interests)
@@ -53,11 +47,9 @@ def manage_user_interests(user_id, interests):
     cur.close()
     db.close()
 
-    insert_user_interest(user_id, interest)
-
 
 def add_word(user_id, words):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     # cur.execute( "INSERT INTO user VALUES ('" + id + "', '" + name + "', '" + str( age ) + "', '" + nation + "');" )
     cur.execute("SELECT word, frq FROM userword WHERE user_id='" + user_id + "' ;")
@@ -90,7 +82,7 @@ def add_word(user_id, words):
 
 
 def add_topic(w1, w2, w3):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     cur.execute("SELECT max(id) as mx FROM topic ;")
     id = 0;
@@ -108,7 +100,7 @@ def add_topic(w1, w2, w3):
 
 
 def select_topics():
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     cur.execute("SELECT word1, word2, word3 FROM topic ;")
     topics = []
@@ -122,7 +114,7 @@ def select_topics():
 
 
 def select_user_words(user_id):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     # cur.execute( "INSERT INTO user VALUES ('" + id + "', '" + name + "', '" + str( age ) + "', '" + nation + "');" )
     cur.execute("SELECT word, frq FROM userword WHERE user_id='" + user_id + "' ;")
@@ -135,7 +127,7 @@ def select_user_words(user_id):
 
 
 def select_words():
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
 
     cur.execute("SELECT word_id, word FROM words;")
@@ -151,7 +143,7 @@ def select_words():
 
 
 def select_words_size():
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     stmt = "select count(*) as cnt from words;"
     cur.execute(stmt)
@@ -167,7 +159,7 @@ def select_words_size():
 
 
 def insert_words_ids(wordsID):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     stmt = "INSERT IGNORE INTO words (word_id, word) VALUES (%s, %s);"
 
@@ -181,7 +173,7 @@ def insert_words_ids(wordsID):
 
 
 def insert_words(words):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     wordsIDs = select_words()
     stmt = "INSERT IGNORE INTO words (word_id, word) VALUES (%s, %s);"
@@ -198,7 +190,7 @@ def insert_words(words):
 
 
 def select_ratings_dic():
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     cur.execute("SELECT user_id, item_id, rating FROM ratings_dict;")
     ratings_dict = {'itemID': list(),
@@ -217,7 +209,7 @@ def select_ratings_dic():
 
 
 def insert_ratings_dic(ratings_dict):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     stmt = "INSERT INTO ratings_dict (user_id, item_id, rating) VALUES ( %s, %s , %s) ON DUPLICATE KEY UPDATE rating = (%s);"
 
@@ -230,7 +222,7 @@ def insert_ratings_dic(ratings_dict):
 
 
 def select_interests_ids():
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     cur.execute("SELECT id, interest FROM interests;")
     interest_ids = {}
@@ -250,7 +242,7 @@ def insert_interests():
 
     iid = select_words_size()
     interestsID = {}
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     stmt = "insert into interests (id, interest) values (%s, %s)"
 
@@ -268,7 +260,7 @@ def insert_interests():
 
 
 def insert_user_interest(user_id, interests):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
 
     interest_ids = select_interests_ids()
@@ -276,6 +268,7 @@ def insert_user_interest(user_id, interests):
     stmt = "INSERT INTO user_interests (user_id, interest_id) VALUES (%s, %s);"
 
     for i in interests:
+        print(user_id,  interest_ids[i], "!!!!!")
         data = (user_id, interest_ids[i])
         cur.execute(stmt, data)
 
@@ -285,7 +278,7 @@ def insert_user_interest(user_id, interests):
 
 
 def select_user_interest(user_id):
-    db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+    db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
     cur = db.cursor()
     stmt = "select interest from interests " \
            "left join user_interests on id = interest_id " \

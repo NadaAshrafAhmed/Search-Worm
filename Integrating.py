@@ -1,23 +1,11 @@
-import codecs
-import contextlib
-
-from flask import Flask, render_template, request, json
-# import urllib.request
+from  contextlib import closing
+from flask import Flask
 from Collaborative_filter import *
-
 from urllib.request import Request, urlopen
-
-import re
 from bs4 import BeautifulSoup
-
 from Clustering import k_means
-
 from TopicModelling import LDA, clean
-
-import glob
-import os
-import re
-import math
+from re import match
 
 import DataBase
 
@@ -54,7 +42,7 @@ new_words = []
 def visible(element):
     if element.parent.name in ['style', 'script', '[document]', 'head', 'title']:
         return False
-    elif re.match('<!--.*-->', str(element.encode('utf-8'))):
+    elif match('<!--.*-->', str(element.encode('utf-8'))):
         return False
     return True
 
@@ -65,7 +53,6 @@ def history1():
 
 
 def get_recommendations(urls, id):
-
     for url in urls:
 
         print(url)
@@ -77,7 +64,7 @@ def get_recommendations(urls, id):
 
         try:
             req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            with contextlib.closing(urlopen(req)) as webpage:
+            with closing(urlopen(req)) as webpage:
                 html = webpage.read()
                 html = html.decode("UTF-8")
             # html = urlopen(req)
@@ -249,8 +236,7 @@ def get_recommendations(urls, id):
     all_urls.append(url2)
     all_urls.append(url3)
     all_urls.append(url4)
-    all_urls.append(urls5) #TODO: add urls5 to card 5
-
+    all_urls.append(urls5)  # TODO: add urls5 to card 5
 
     all_urls_str = str(all_urls)
 
