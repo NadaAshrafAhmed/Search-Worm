@@ -50,24 +50,23 @@ def visible(element):
 def history1():
     return str([["a", "b", "c", "d"], ["e", "f", "g", "h"], ["i", "j", "k", "l"], ["m", "n", "o", "p"]]).replace("'",
                                                                                                                  '"')
+def filter_urls(urls):
+    remove=['127.0.0.1','localhost',"facebook","chrome-extension"]
 
+    removed_urls=[url for url in urls for r in remove if r in url   ]
+    filtered_urls=list(set(urls)-set(removed_urls))
+    return filtered_urls
 
 def get_recommendations(urls, id):
+    urls = filter_urls( urls )
+    # print(urls)
     for url in urls:
-
         print(url)
-        # req = Request(url, headers={'User-Agent': 'Mozilla/5.0'} )
-        # mybytes = urlopen( req ).read()
-        # mystr = mybytes.decode( "utf8" )
-        # # print (mystr)
-        # doc =  html2text.html2text( str( mystr ) )
-
         try:
             req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
             with closing(urlopen(req)) as webpage:
                 html = webpage.read()
                 html = html.decode("UTF-8")
-            # html = urlopen(req)
             try:
                 soup = BeautifulSoup(html, "html.parser")
                 data = soup.findAll(text=True)
@@ -113,6 +112,8 @@ def get_recommendations(urls, id):
 
         topic_words1 = LDA(topic1)
 
+        DataBase.manage_collab_param( id, topic_words1[0] + topic_words1[1] + topic_words1[2] )
+
         for i in topic_words1:
             DataBase.add_topic(i[0], i[1], i[2])
             for j in i:
@@ -130,6 +131,8 @@ def get_recommendations(urls, id):
     if len(topic2) > 0:
 
         topic_words2 = LDA(topic2)
+
+        DataBase.manage_collab_param( id, topic_words2[0] + topic_words2[1] + topic_words2[2] )
 
         for i in topic_words2:
             DataBase.add_topic(i[0], i[1], i[2])
@@ -149,6 +152,8 @@ def get_recommendations(urls, id):
 
         topic_words3 = LDA(topic3)
 
+        DataBase.manage_collab_param( id,topic_words3[0] + topic_words3[1] + topic_words3[2] )
+
         for i in topic_words3:
             DataBase.add_topic(i[0], i[1], i[2])
             for j in i:
@@ -167,6 +172,8 @@ def get_recommendations(urls, id):
 
         topic_words4 = LDA(topic4)
 
+        DataBase.manage_collab_param( id,topic_words4[0] + topic_words4[1] + topic_words4[2] )
+
         for i in topic_words4:
             DataBase.add_topic(i[0], i[1], i[2])
             for j in i:
@@ -181,10 +188,6 @@ def get_recommendations(urls, id):
                 except Exception as e:
                     print(e)
 
-    DataBase.manage_collab_param(id, topic_words1[0] + topic_words1[1] + topic_words1[2]
-                                 + topic_words2[0] + topic_words2[1] + topic_words2[2]
-                                 + topic_words3[0] + topic_words3[1] + topic_words3[2]
-                                 + topic_words4[0] + topic_words4[1] + topic_words4[2])
 
     url1 = list(set(urls1))
     url2 = list(set(urls2))

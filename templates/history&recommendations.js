@@ -76,7 +76,7 @@ chrome.storage.local.get('machine-id', function (item) {
                         }
                         else {
                             chrome.storage.local.set({'database': true});
-                            sendHistory(storedMacId, 10);
+                            sendHistory(storedMacId, numOfLinks);
                         }
                     }
                 }
@@ -94,7 +94,7 @@ chrome.storage.local.get('machine-id', function (item) {
                     console.log(diffDays)
 
                     if (diffDays >= 4) {// number of days after we shod run clustring algorithem
-                        sendHistory(storedMacId, 10);
+                        sendHistory(storedMacId, numOfLinks);
                         showResults();
                     }
                 });
@@ -166,7 +166,7 @@ function delete_saved_page(index) {
         }
     });
 }
-
+numOfLinks=10
 function sendHistory(storedMacId, numOfLinks) {
     chrome.history.search({text: '', maxResults: numOfLinks}, function (data) {
         var urls = []

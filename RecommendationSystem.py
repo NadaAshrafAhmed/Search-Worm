@@ -1,7 +1,7 @@
 from flask import Flask, request
 from Integrating import get_recommendations
 from Compyler import compile
-from DataBase import add_user, user_exist
+from DataBase import add_user, user_exist, insert_interests
 
 app = Flask(__name__)
 
@@ -27,7 +27,7 @@ def save_data():
     interests = interests.split('#')
 
     # NOTE! run this one time only and comment
-    # DataBase.insert_interests()
+    # insert_interests()
 
     add_user(id, name, age, nation, country, gender, interests)
 
@@ -38,11 +38,11 @@ def save_data():
 def id_exist():
     id = request.get_json()['ID']
     print(id)
-    user_exist(id)
     # check database ..
     if (user_exist(id)):
         return ("true")
     return ("false")
+    # return "true"
 
 
 @app.route('/get_html', methods=["POST"])
