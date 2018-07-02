@@ -10,14 +10,15 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body style="background-image: url('img/nature.jpeg');">
+<body style=    "background-image: url('img/nature.jpeg');">
 <section id="contact">
     <div class="container">
         <h1 class="card-header header">Getting Started</h1>
         <form action="http://127.0.0.1:5000/save_data" method="post" id="form" class="form-control transparent-light">
             <div class="form-group row style-row">
                 <div class="col-md-6">
-                    <input type="text" pattern="[A-Za-z0-9]" title="Please Enter Alphanumeric Characters" id="name"
+
+                    <input type="text" pattern="[A-Za-z0-9]{1, 50}" title="Please Enter Alphanumeric Characters" id="name"
                            name="name" class="form-control" placeholder="Name" autocomplete="off"
                            required>
                 </div>
@@ -29,12 +30,14 @@
             </div>
             <div class="form-group row style-row">
                 <div class="col-md-6">
-                    <input type="text" pattern="[A-Za-z0-9]" title="Please Enter Alphanumeric Characters" id="nation"
+
+                    <input type="text" pattern="[A-Za-z0-9]{1, 50}" title="Please Enter Alphanumeric Characters" id="nation"
                            name="nation" class="form-control" placeholder="Nationality"
                            autocomplete="off" required>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" pattern="[A-Za-z0-9]" title="Please Enter Alphanumeric Characters" id="place"
+
+                    <input type="text" pattern="[A-Za-z0-9]{1, 50}" title="Please Enter Alphanumeric Characters" id="place"
                            style="float: right;" name="place" class="form-control"
                            placeholder="Current Living"
                            autocomplete="off" required>
