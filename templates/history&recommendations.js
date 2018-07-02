@@ -148,7 +148,7 @@ function delete_saved_page(index) {
             return;
         link.innerHTML = "";
         for (var i = 0; i < pages['offlinePages'].length; i++) {
-            link.innerHTML += "<li> <a href='#' id='" + i + "'>" + pages['offlinePages'][i]['title'] + "</a> <button id='delete" + i + "' class='btn-danger' style='float: right;font-size: 10px'>X</button> </li>";
+            link.innerHTML += "<li> <a href='#' id='" + i + "'>" + pages['offlinePages'][i]['title'] + "</a><button  style='color: red;' id='delete" + i + "' type='button' title='Remove' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button></li>";
         }
         for (i = 0; i < pages['offlinePages'].length; i++) {
             (function (i) {
@@ -210,7 +210,7 @@ chrome.storage.local.get('offlinePages', function (pages) {
                 var link = document.getElementById('offline');
                 if (link == undefined)
                     return;
-                link.innerHTML += "<li> <a href='#' id='" + i + "'>" + pages['offlinePages'][i]['title'] + "</a> <button id='delete" + i + "' class='btn-danger' style='float: right;font-size: 10px'>X</button> </li>";
+                link.innerHTML += "<li> <a href='#' id='" + i + "'>" + pages['offlinePages'][i]['title'] + "</a><button  style='color: red;' id='delete" + i + "' type='button' title='Remove' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button></li>";
             }
             for (i = 0; i < pages['offlinePages'].length; i++) {
                 (function (i) {

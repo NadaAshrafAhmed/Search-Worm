@@ -1,12 +1,8 @@
-from collections import defaultdict
-
 import pandas as pd
 from surprise import Reader, Dataset, KNNBasic, accuracy
 from surprise.model_selection import KFold
 from DataBase import *
-
-import json
-
+from json import load, dump
 
 
 wordFreq = defaultdict(dict)  # must read all previous frequencies for user X
@@ -17,8 +13,6 @@ ratings_dict = {'itemID': list(),
                 'rating': list()}
 
 
-# TODO: save wordsID, rating dict in collaborative table
-# TODO: save wordfreq in user table
 def calc_collaborative_param(new_words, id):
 
     ratings_dict = select_ratings_dic()
@@ -94,7 +88,7 @@ def collaborative_filter():
     top_n = get_top_n(predictions, n=3)
 
     with open('top_n.json', 'w') as fp:
-        json.dump(top_n, fp, indent=4)
+        dump(top_n, fp, indent=4)
 
     return top_n
 
@@ -106,7 +100,7 @@ def get_suggested_topics(id):
     # for uid, user_ratings in top_n.items():
     #     print(uid, [iid for (iid, _) in user_ratings])
     with open('top_n.json', 'r') as fp:
-        top_n = json.load(fp)
+        top_n = load(fp)
 
     new_items = top_n[id]
     for iid, _ in new_items:

@@ -1,7 +1,6 @@
 import mysql.connector
 from collections import defaultdict
 
-
 def add_user(id, name, age, nation, country, gender, interests):
     db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
     cur = db.cursor()
@@ -47,9 +46,6 @@ def manage_user_interests(user_id, interests):
     db.commit()
     cur.close()
     db.close()
-
-    # Leeh?
-    # insert_user_interest(user_id, interests)
 
 
 def add_word(user_id, words):
