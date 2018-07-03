@@ -4,7 +4,6 @@ from surprise.model_selection import KFold
 from DataBase import *
 from json import load, dump
 
-
 wordFreq = defaultdict(dict)  # must read all previous frequencies for user X
 
 # global for all users
@@ -14,10 +13,15 @@ ratings_dict = {'itemID': list(),
 
 
 def calc_collaborative_param(new_words, id):
-
     ratings_dict = select_ratings_dic()
     wordFreq = select_user_words(id)
     wordsIDs = select_words()
+    print("word freq")
+    print(wordFreq)
+    print("wordsID")
+    print(wordsIDs)
+    print("rating dict")
+    print(ratings_dict)
 
     mx = sum(wordFreq.values())
     for word in new_words:
@@ -26,6 +30,8 @@ def calc_collaborative_param(new_words, id):
         ratings_dict['userID'].append(id)
 
     insert_ratings_dic(ratings_dict)
+
+    return ratings_dict
 
 
 def get_top_n(predictions, n):
@@ -56,10 +62,8 @@ def get_top_n(predictions, n):
     return top_n
 
 
-def collaborative_filter():
-
-    ratings_dict = select_ratings_dic()
-
+def collaborative_filter(id, new_words):
+    ratings_dict = calc_collaborative_param(new_words, id)
 
     df = pd.DataFrame(ratings_dict)
 
@@ -84,7 +88,6 @@ def collaborative_filter():
     new_data = trainset.build_anti_testset()
     predictions = algo.test(new_data)
 
-    global top_n
     top_n = get_top_n(predictions, n=3)
 
     with open('top_n.json', 'w') as fp:
@@ -99,8 +102,13 @@ def get_suggested_topics(id):
     # for all users get item id
     # for uid, user_ratings in top_n.items():
     #     print(uid, [iid for (iid, _) in user_ratings])
-    with open('top_n.json', 'r') as fp:
-        top_n = load(fp)
+
+    try:
+        with open('top_n.json', 'r') as fp:
+            top_n = load(fp)
+
+    except:
+        "no new suggestions for you :( "
 
     new_items = top_n[id]
     for iid, _ in new_items:
@@ -117,6 +125,22 @@ def get_suggested_topics(id):
             for new_word in new_words:
                 if word == new_word and k < 4:
                     top_topics.append(query)
-                    k+=1
+                    k += 1
 
-    return top_topics
+    print("new words")
+    print(new_words)
+    print("top topics")
+    print(top_topics)
+
+    interests = ["Technology", "Space", "Music", "Sports", "Nature and Animals",
+                 "Science", "Fashion", "Programming", "Education", "Movies"]
+    google_one_word = []
+
+    for word in new_words:
+        if word in interests:
+            google_one_word.append(word)
+
+    print("google one word")
+    print(google_one_word)
+
+    return top_topics, google_one_word

@@ -112,7 +112,6 @@ def get_recommendations(urls, id):
 
         topic_words1 = LDA(topic1)
 
-        DataBase.manage_collab_param( id, topic_words1[0] + topic_words1[1] + topic_words1[2] )
 
         for i in topic_words1:
             DataBase.add_topic(i[0], i[1], i[2])
@@ -132,7 +131,6 @@ def get_recommendations(urls, id):
 
         topic_words2 = LDA(topic2)
 
-        DataBase.manage_collab_param( id, topic_words2[0] + topic_words2[1] + topic_words2[2] )
 
         for i in topic_words2:
             DataBase.add_topic(i[0], i[1], i[2])
@@ -152,7 +150,6 @@ def get_recommendations(urls, id):
 
         topic_words3 = LDA(topic3)
 
-        DataBase.manage_collab_param( id,topic_words3[0] + topic_words3[1] + topic_words3[2] )
 
         for i in topic_words3:
             DataBase.add_topic(i[0], i[1], i[2])
@@ -172,7 +169,6 @@ def get_recommendations(urls, id):
 
         topic_words4 = LDA(topic4)
 
-        DataBase.manage_collab_param( id,topic_words4[0] + topic_words4[1] + topic_words4[2] )
 
         for i in topic_words4:
             DataBase.add_topic(i[0], i[1], i[2])
@@ -218,12 +214,25 @@ def get_recommendations(urls, id):
     for i in urls4:
         print(i)
 
-    calc_collaborative_param(new_words, id)
-    collaborative_filter()
-    suggested_topics = get_suggested_topics(id)
+    DataBase.manage_collab_param(id, new_words)
+    collaborative_filter(id, new_words)
+    suggested_topics, suggested_interests = get_suggested_topics(id)
+    print("suggested interests")
+    print(suggested_interests)
     for topic in suggested_topics:
         try:
             res = search(' '.join(topic), stop=3)
+            k = 0
+            for r in res:
+                if k < 3:
+                    urls5.append(r)
+                    k += 1
+        except Exception as e:
+            print(e)
+
+    for topic in suggested_interests:
+        try:
+            res = search(topic, stop=3)
             k = 0
             for r in res:
                 if k < 3:
@@ -239,7 +248,7 @@ def get_recommendations(urls, id):
     all_urls.append(url2)
     all_urls.append(url3)
     all_urls.append(url4)
-    all_urls.append(urls5)  # TODO: add urls5 to card 5
+    all_urls.append(urls5)
 
     all_urls_str = str(all_urls)
 

@@ -9,9 +9,11 @@ app = Flask(__name__)
 @app.route('/start', methods=["POST"])
 def start():
     # list of user history
+
     urls = list(set(request.get_json()['urls']))
     id = request.get_json()['ID']
     print(id)
+
     return get_recommendations(urls, id)
 
 
@@ -27,7 +29,7 @@ def save_data():
     interests = interests.split('#')
 
     # NOTE! run this one time only and comment
-    # insert_interests()
+    #insert_interests()
 
     add_user(id, name, age, nation, country, gender, interests)
 

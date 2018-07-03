@@ -24,9 +24,9 @@ def k_means(documents):
     # tsne.fit(tfidf)
     # tsne.poof()
 
-    tsne = TSNEVisualizer(labels=["documents"])
-    tsne.fit(tfidf)
-    tsne.poof()
+    # tsne = TSNEVisualizer(labels=["documents"])
+    # tsne.fit(tfidf)
+    # tsne.poof()
 
     num_clusters = 4  # Change it according to your data.
     km = KMeans(n_clusters=num_clusters)

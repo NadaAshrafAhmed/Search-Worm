@@ -1,9 +1,10 @@
 import mysql.connector
 from collections import defaultdict
 
+
 def add_user(id, name, age, nation, country, gender, interests):
     if not user_exist(id):
-        db = mysql.connector.connect(user='root', password='root', host='localhost', database='search-worm')
+        db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
         cur = db.cursor()
         cur.execute("INSERT INTO user VALUES ('" + id + "', '" + name + "', '" + str(age)
                     + "', '" + nation + "', '" + country + "', '" + gender + "' );")
@@ -27,8 +28,8 @@ def user_exist(id):
 
 
 def manage_collab_param(user_id, words):
-    add_word(user_id, words)
-    insert_words(words)
+    add_word(user_id, words)  # freq
+    insert_words(words)  # words in db
 
 
 def manage_user_interests(user_id, interests):
@@ -121,7 +122,7 @@ def select_user_words(user_id):
     cur.execute("SELECT word, frq FROM userword WHERE user_id='" + user_id + "' ;")
     user_words = defaultdict(dict)
     for (word, frq) in cur.fetchall():
-        user_words[word] = int(frq)
+        user_words[word] = float(frq)
     cur.close()
     db.close()
     return user_words
@@ -221,6 +222,12 @@ def insert_ratings_dic(ratings_dict):
         data = (user_id, item_id, ui_rating, ui_rating)
         cur.execute(stmt, data)
 
+    db.commit()
+    cur.close()
+    db.close()
+
+
+
 
 def select_interests_ids():
     db = mysql.connector.connect(user='root', password='zombie96', host='localhost', database='search-worm')
@@ -252,7 +259,8 @@ def insert_interests():
         interestsID[interest] = iid
         cur.execute(stmt, data)
         iid += 1
-
+    print("done")
+    print(interestsID)
     db.commit()
     cur.close()
     db.close()
@@ -269,7 +277,6 @@ def insert_user_interest(user_id, interests):
     stmt = "INSERT INTO user_interests (user_id, interest_id) VALUES (%s, %s);"
 
     for i in interests:
-        print(user_id,  interest_ids[i], "!!!!!")
         data = (user_id, interest_ids[i])
         cur.execute(stmt, data)
 
@@ -295,5 +302,3 @@ def select_user_interest(user_id):
     db.close()
 
     return user_interests
-
-
