@@ -221,6 +221,9 @@ def insert_ratings_dic(ratings_dict):
         ui_rating = ratings_dict['rating'][i]
         data = (user_id, item_id, ui_rating, ui_rating)
         cur.execute(stmt, data)
+    db.commit()
+    cur.close()
+    db.close()
 
     db.commit()
     cur.close()
