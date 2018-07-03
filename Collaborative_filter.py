@@ -27,6 +27,8 @@ def calc_collaborative_param(new_words, id):
 
     insert_ratings_dic(ratings_dict)
 
+    return ratings_dict
+
 
 def get_top_n(predictions, n):
     '''Return the top-N recommendation for each user from a set of predictions.
@@ -56,10 +58,9 @@ def get_top_n(predictions, n):
     return top_n
 
 
-def collaborative_filter():
+def collaborative_filter(id, new_words):
 
-    ratings_dict = select_ratings_dic()
-
+    ratings_dict = calc_collaborative_param(new_words, id)
 
     df = pd.DataFrame(ratings_dict)
 

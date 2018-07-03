@@ -1,6 +1,6 @@
 chrome.storage.local.get('background', function (img) {
     if (img['background'] == undefined) {
-        chrome.storage.local.set({'background': "../img/nature.jpg"});
+        chrome.storage.local.set({'background': "../img/nature.jpeg"});
         change_background("../img/nature.jpg");
     } else {
         change_background(img['background']);
@@ -83,15 +83,18 @@ chrome.storage.local.get('machine-id', function (item) {
             }
             else {
                 chrome.storage.local.get('lastUpdate', function (x) {
+                    var diffDays=4
+                    if (x['lastUpdate'])
+                    {
+                        var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+                        //console.log(x['lastUpdate'])
+                        var today = new Date();
+                        var firstDate = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+                        var secondDate = new Date(x['lastUpdate']['year'], x['lastUpdate']['month'], x['lastUpdate']['day']);
 
-                    var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-                    //console.log(x['lastUpdate'])
-                    var today = new Date();
-                    var firstDate = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
-                    var secondDate = new Date(x['lastUpdate']['year'], x['lastUpdate']['month'], x['lastUpdate']['day']);
-
-                    var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
-                    console.log(diffDays)
+                        var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
+                        console.log(diffDays)
+                    }
 
                     if (diffDays >= 4) {// number of days after we shod run clustring algorithem
                         sendHistory(storedMacId, numOfLinks);

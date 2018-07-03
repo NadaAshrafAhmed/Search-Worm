@@ -112,8 +112,6 @@ def get_recommendations(urls, id):
 
         topic_words1 = LDA(topic1)
 
-        DataBase.manage_collab_param( id, topic_words1[0] + topic_words1[1] + topic_words1[2] )
-
         for i in topic_words1:
             DataBase.add_topic(i[0], i[1], i[2])
             for j in i:
@@ -132,7 +130,6 @@ def get_recommendations(urls, id):
 
         topic_words2 = LDA(topic2)
 
-        DataBase.manage_collab_param( id, topic_words2[0] + topic_words2[1] + topic_words2[2] )
 
         for i in topic_words2:
             DataBase.add_topic(i[0], i[1], i[2])
@@ -152,7 +149,6 @@ def get_recommendations(urls, id):
 
         topic_words3 = LDA(topic3)
 
-        DataBase.manage_collab_param( id,topic_words3[0] + topic_words3[1] + topic_words3[2] )
 
         for i in topic_words3:
             DataBase.add_topic(i[0], i[1], i[2])
@@ -172,7 +168,6 @@ def get_recommendations(urls, id):
 
         topic_words4 = LDA(topic4)
 
-        DataBase.manage_collab_param( id,topic_words4[0] + topic_words4[1] + topic_words4[2] )
 
         for i in topic_words4:
             DataBase.add_topic(i[0], i[1], i[2])
@@ -218,9 +213,10 @@ def get_recommendations(urls, id):
     for i in urls4:
         print(i)
 
-    calc_collaborative_param(new_words, id)
-    collaborative_filter()
-    suggested_topics = get_suggested_topics(id)
+    DataBase.manage_collab_param( id, new_words )
+    collaborative_filter( id, new_words )
+    suggested_topics = get_suggested_topics( id )
+
     for topic in suggested_topics:
         try:
             res = search(' '.join(topic), stop=3)

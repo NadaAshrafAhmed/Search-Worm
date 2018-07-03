@@ -121,7 +121,7 @@ def select_user_words(user_id):
     cur.execute("SELECT word, frq FROM userword WHERE user_id='" + user_id + "' ;")
     user_words = defaultdict(dict)
     for (word, frq) in cur.fetchall():
-        user_words[word] = int(frq)
+        user_words[word] = float(frq)
     cur.close()
     db.close()
     return user_words
@@ -220,6 +220,9 @@ def insert_ratings_dic(ratings_dict):
         ui_rating = ratings_dict['rating'][i]
         data = (user_id, item_id, ui_rating, ui_rating)
         cur.execute(stmt, data)
+    db.commit()
+    cur.close()
+    db.close()
 
 
 def select_interests_ids():
