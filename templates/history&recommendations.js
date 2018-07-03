@@ -1,6 +1,6 @@
 chrome.storage.local.get('background', function (img) {
     if (img['background'] == undefined) {
-        chrome.storage.local.set({'background': "../img/nature.jpeg"});
+        chrome.storage.local.set({'background': "../img/nature.jpg"});
         change_background("../img/nature.jpg");
     } else {
         change_background(img['background']);

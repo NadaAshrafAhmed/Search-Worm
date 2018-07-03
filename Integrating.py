@@ -116,53 +116,53 @@ def get_recommendations(urls, id):
             DataBase.add_topic(i[0], i[1], i[2])
             for j in i:
                 new_words.append(j)
+
+            try:
                 k = 0
-                try:
-                    res = search(j, stop=3)
-                    for r in res:
-                        if k < 3:
-                            urls1.append(r)
-                            k += 1
-                except Exception as e:
-                    print(e)
+                res = search(' '.join( i ), stop=3)
+                for r in res:
+                    if k < 3:
+                        urls1.append(r)
+                        k += 1
+            except Exception as e:
+                print(e)
 
     if len(topic2) > 0:
 
         topic_words2 = LDA(topic2)
 
-
         for i in topic_words2:
             DataBase.add_topic(i[0], i[1], i[2])
             for j in i:
-                k = 0
                 new_words.append(j)
-                try:
-                    res = search(j, stop=3)
-                    for r in res:
-                        if k < 3:
-                            urls2.append(r)
-                            k += 1
-                except Exception as e:
-                    print(e)
+            try:
+                k = 0
+                res = search(' '.join( i ), stop=3)
+                for r in res:
+                    if k < 3:
+                        urls2.append(r)
+                        k += 1
+            except Exception as e:
+                print(e)
 
     if len(topic3) > 0:
 
         topic_words3 = LDA(topic3)
 
-
         for i in topic_words3:
             DataBase.add_topic(i[0], i[1], i[2])
             for j in i:
-                k = 0
+
                 new_words.append(j)
-                try:
-                    res = search(j, stop=3)
-                    for r in res:
-                        if k < 3:
-                            urls3.append(r)
-                            k += 1
-                except Exception as e:
-                    print(e)
+            try:
+                k = 0
+                res = search(' '.join( i ), stop=3)
+                for r in res:
+                    if k < 3:
+                        urls3.append(r)
+                        k += 1
+            except Exception as e:
+                print(e)
 
     if len(topic4) > 0:
 
@@ -172,16 +172,17 @@ def get_recommendations(urls, id):
         for i in topic_words4:
             DataBase.add_topic(i[0], i[1], i[2])
             for j in i:
+                new_words.append( j )
+            try:
                 k = 0
-                new_words.append(j)
-                try:
-                    res = search(j, stop=3)
-                    for r in res:
-                        if k < 3:
-                            urls4.append(r)
-                            k += 1
-                except Exception as e:
-                    print(e)
+
+                res = search(' '.join( i ), stop=3)
+                for r in res:
+                    if k < 3:
+                        urls4.append(r)
+                        k += 1
+            except Exception as e:
+                print(e)
 
 
     url1 = list(set(urls1))
