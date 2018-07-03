@@ -16,12 +16,6 @@ def calc_collaborative_param(new_words, id):
     ratings_dict = select_ratings_dic()
     wordFreq = select_user_words(id)
     wordsIDs = select_words()
-    print("word freq")
-    print(wordFreq)
-    print("wordsID")
-    print(wordsIDs)
-    print("rating dict")
-    print(ratings_dict)
 
     mx = sum(wordFreq.values())
     for word in new_words:
@@ -127,10 +121,6 @@ def get_suggested_topics(id):
                     top_topics.append(query)
                     k += 1
 
-    print("new words")
-    print(new_words)
-    print("top topics")
-    print(top_topics)
 
     interests = ["Technology", "Space", "Music", "Sports", "Nature and Animals",
                  "Science", "Fashion", "Programming", "Education", "Movies"]
@@ -140,7 +130,5 @@ def get_suggested_topics(id):
         if word in interests:
             google_one_word.append(word)
 
-    print("google one word")
-    print(google_one_word)
 
     return top_topics, google_one_word

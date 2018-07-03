@@ -225,10 +225,6 @@ def insert_ratings_dic(ratings_dict):
     cur.close()
     db.close()
 
-    db.commit()
-    cur.close()
-    db.close()
-
 
 
 
