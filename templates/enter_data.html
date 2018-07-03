@@ -9,39 +9,35 @@
 
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <style>
-        input[type="text"]:not(:placeholder-shown):focus:invalid {
-            border-color: red;
-        }
-    </style>
 </head>
-<body style="background-image: url('img/nature.jpeg');">
+<body style=    "background-image: url('img/nature.jpeg');">
 <section id="contact">
     <div class="container">
         <h1 class="card-header header">Getting Started</h1>
         <form action="http://127.0.0.1:5000/save_data" method="post" id="form" class="form-control transparent-light">
             <div class="form-group row style-row">
                 <div class="col-md-6">
-                    <input type="text" pattern="[A-Za-z0-9]{1,}" title="Please Enter Alphanumeric Characters" id="name"
+
+                    <input type="text" pattern="[A-Za-z0-9]{1, 50}" title="Please Enter Alphanumeric Characters" id="name"
                            name="name" class="form-control" placeholder="Name" autocomplete="off"
                            required>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" pattern="[0-9]{1,}" id="age" style="float: right;" name="age"
-                           class="form-control"
+                    <input type="number" id="age" style="float: right;" name="age" class="form-control"
                            placeholder="Age" autocomplete="off"
                            required>
                 </div>
             </div>
             <div class="form-group row style-row">
                 <div class="col-md-6">
-                    <input type="text" pattern="[A-Za-z0-9]{1,}" title="Please Enter Alphanumeric Characters"
-                           id="nation"
+
+                    <input type="text" pattern="[A-Za-z0-9]{1, 50}" title="Please Enter Alphanumeric Characters" id="nation"
                            name="nation" class="form-control" placeholder="Nationality"
                            autocomplete="off" required>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" pattern="[A-Za-z0-9]{1,}" title="Please Enter Alphanumeric Characters" id="place"
+
+                    <input type="text" pattern="[A-Za-z0-9]{1, 50}" title="Please Enter Alphanumeric Characters" id="place"
                            style="float: right;" name="place" class="form-control"
                            placeholder="Current Living"
                            autocomplete="off" required>
@@ -67,6 +63,7 @@
                 <label><b> Interests:</b></label>
                 <br>
                 <div class="list-group-horizontal" title="Select at least 4 interests" id="topic-list">
+
                     <input type="button" id="topic1"
                            class="border rounded list-group-item list-group-item-action dummy" value="Technology">
                     <input type="button" id="topic2"
