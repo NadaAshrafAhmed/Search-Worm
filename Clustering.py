@@ -3,7 +3,6 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.cluster import KMeans
 from yellowbrick.text import TSNEVisualizer
 
-
 import pandas as pd
 
 
@@ -20,6 +19,10 @@ def k_means(documents):
     transformer = TfidfTransformer(smooth_idf=False)
     tfidf = transformer.fit_transform(X)
     print(tfidf.shape)
+    # todo: get Graphs
+    # tsne = TSNEVisualizer(labels=["documents"])
+    # tsne.fit(tfidf)
+    # tsne.poof()
 
     tsne = TSNEVisualizer(labels=["documents"])
     tsne.fit(tfidf)

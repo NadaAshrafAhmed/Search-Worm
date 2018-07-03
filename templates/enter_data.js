@@ -21,7 +21,7 @@ document.getElementById("form").addEventListener('submit', function (event) {
 
     }
     if (c < 4) {
-        document.getElementById("error").innerHTML = "Select At least 4 Topics";
+        document.getElementById("error").innerHTML = "Please select at least 4 interests";
         document.getElementById("error").style.display = "block";
         event.preventDefault();
     }
