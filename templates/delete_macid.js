@@ -1,17 +1,19 @@
 var macId = undefined;
 chrome.storage.local.get( null, function(item){
 
-    chrome.storage.local.remove('machine-id')
+    chrome.storage.local.remove('machine-id');
 
     console.log(item['machine-id']);
 
 
-    chrome.storage.local.remove('database')
+    chrome.storage.local.remove('database');
 
-    chrome.storage.local.remove('lastUpdate')
+    chrome.storage.local.remove('lastUpdate');
+    
+    chrome.storage.local.remove('background');
 
     console.log(item['database']);
-    chrome.storage.local.remove('res')
+    chrome.storage.local.remove('res');
 
     console.log(item['res']);
 
