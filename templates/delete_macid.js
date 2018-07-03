@@ -8,7 +8,9 @@ chrome.storage.local.get( null, function(item){
 //
 //    chrome.storage.local.remove('database')
 
-    chrome.storage.local.remove('lastUpdate')
+    chrome.storage.local.remove('lastUpdate');
+    
+    chrome.storage.local.remove('background');
 
 //    console.log(item['database']);
 //    chrome.storage.local.remove('res')
